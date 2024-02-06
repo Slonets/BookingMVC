@@ -1,0 +1,58 @@
+﻿@using BusinessLogic.DTOs.User
+@model RegistedDto
+
+@{
+    var currentTime = DateTime.Now;
+    var formattedTime = currentTime.ToString("HH:mm:ss"); // Формат часу можна змінити за необхідності
+    var dayOfMonth = currentTime.Day;
+    var month = currentTime.ToString("MMMM"); // Повний назва місяця
+    var year = currentTime.Year;
+}
+
+<div class="row">
+    <div class="col-md-4 mx-auto mt-5 text-center">
+
+       
+        <form method="post" asp-controller="Account" asp-action="Register">
+
+            @*означає, що виведе усі помилки зверху*@
+            <div asp-validation-summary="All"></div>
+
+            <div class="mb-4 d-flex justify-content-center">
+                <img src="~/images/register.png" alt="" width="72" height="65">
+            </div>
+
+            <h1 class="h3 mb-3 fw-normal">Регістрація</h1>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="firstName" placeholder="Ім'я" asp-for="FirstName">
+                <label for="firstName">Ім'я</label>
+                <span asp-validation-for="FirstName" class="form-text text-danger"></span>
+            </div>
+
+            <div class="form-floating">
+                <input type="text" class="form-control" id="lastName" placeholder="Прізвище" asp-for="LastName">
+                <label for="lastName">Прізвище</label>
+                <span asp-validation-for="LastName" class="form-text text-danger"></span>
+            </div>
+
+            <div class="form-floating">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" asp-for="Email">
+                <label for="floatingInput">Email address</label>
+                <span asp-validation-for="Email" class="form-text text-danger"></span>
+            </div>
+
+            <div class="form-floating">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" asp-for="Password">
+                <label for="floatingPassword">Password</label>
+                <span asp-validation-for="Password" class="form-text text-danger"></span>
+            </div>
+
+            <button class="btn btn-primary w-100 py-2" type="submit">Зареєструватися</button>
+
+            <p class="mt-5 mb-3 text-body-secondary">
+                @formattedTime, @dayOfMonth @month @year
+            </p>
+        </form>
+    </div>
+</div>
