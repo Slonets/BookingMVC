@@ -20,14 +20,17 @@ namespace BusinessLogic.BookingServices
         private readonly IMapper _mapper;
         private readonly IMailService _mailService;
 
-        public AccountService(UserManager<UserEntity> userManager, IMapper mapper, IMailService mailService)
+        public AccountService(UserManager<UserEntity> userManager,
+            SignInManager<UserEntity> signInManager,
+            IMapper mapper, IMailService mailService)
         {
+            _signInManager = signInManager;
             _userManager = userManager;
             _mapper = mapper;
             _mailService = mailService;
         }       
 
-        public async Task Login(LoginDto loginDto)
+        public async Task<bool> Login(LoginDto loginDto)
         {
             var seach = _mapper.Map<UserEntity>(loginDto);
 
@@ -35,12 +38,16 @@ namespace BusinessLogic.BookingServices
             
             if (existUser== null)
             {
-                throw new CustomHttpException("This castumer don't exsist!", HttpStatusCode.NotFound);                
+                return false;                
             }
-            
+            var result = await _signInManager.PasswordSignInAsync(existUser, loginDto.Password, false, false);
             IdentityResult res = await _userManager.CreateAsync(seach, loginDto.Password);
-            await _userManager.AddToRoleAsync(seach, loginDto.Role);
-           
+            if (result.Succeeded)
+            {
+                await _signInManager.SignInAsync(existUser, isPersistent: false);
+                return true;
+            }
+            return false;
         }
         public async Task Registration(RegistedDto dto)
         {

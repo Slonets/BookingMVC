@@ -40,11 +40,15 @@ namespace New.Controllers
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginDto loginDto)
-        {         
-              
-         await _accountService.Login(loginDto);
-         // Успішній віхід перекидає на сторінку Home
-         return RedirectToAction(nameof(Index), "Home");              
+        {
+            var result = await _accountService.Login(loginDto);
+            if (!result)
+            {
+                ModelState.AddModelError("","Дані вказано не вірно!");
+                return View(loginDto); //відобраємо туж саму сторінку 
+            }
+            // Успішній віхід перекидає на сторінку Home
+            return RedirectToAction(nameof(Index), "Home");
         }
     }        
 }

@@ -10,7 +10,7 @@ namespace BusinessLogic.Interfaces
 {
     public interface IAccountService
     {       
-        Task Login(LoginDto loginDto);
+        Task<bool> Login(LoginDto loginDto);
         Task Registration(RegistedDto registerDto);
     }
 }
