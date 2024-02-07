@@ -55,6 +55,7 @@ app.UseRouting();
 //Ініцілізуємо глобальну обробку помилок
 app.UseMiddleware<ErrorHandlerMiddleware>();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
