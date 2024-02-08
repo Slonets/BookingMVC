@@ -15,15 +15,22 @@ namespace BusinessLogic.Mappers
         public AppProfile()
         {
             CreateMap<RegistedDto, UserEntity>()
-           .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email))
-           .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
-           .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
-           .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName));
+             .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email))
+             .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+             .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
+             .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
+             .ForMember(dest => dest.UserRoles, opt => opt.Ignore()); // Assuming UserRoles will be handled separately
+
+            CreateMap<UserEntity, RegistedDto>()
+                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
+                .ForMember(dest => dest.LastName, opt => opt.MapFrom(src => src.LastName))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                .ForMember(dest => dest.Password, opt => opt.Ignore()) // Assuming password won't be mapped back
+                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => GetRoleFromUserEntity(src))); // Assuming a user has one role
 
             //UserEntity -> LoginDto
             CreateMap<UserEntity, LoginDto>()
-                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
-                .ForMember(dest => dest.Role, opt => opt.MapFrom(src => GetRoleFromUserEntity(src)))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))                
                 .ForMember(dest => dest.Password, opt => opt.Ignore()); // Пароль мепетись не має
 
             //LoginDto -> UserEntity

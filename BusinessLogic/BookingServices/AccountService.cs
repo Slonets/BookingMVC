@@ -4,6 +4,7 @@ using BusinessLogic.Helpers;
 using BusinessLogic.Interfaces;
 using DataAccess.Entities;
 using Microsoft.AspNetCore.Identity;
+using NETCore.MailKit.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,16 +19,16 @@ namespace BusinessLogic.BookingServices
         private readonly UserManager<UserEntity> _userManager;
         private readonly SignInManager<UserEntity> _signInManager;
         private readonly IMapper _mapper;
-        private readonly IMailService _mailService;
+        private readonly ISmtpEmailService _emailService;
 
         public AccountService(UserManager<UserEntity> userManager,
             SignInManager<UserEntity> signInManager,
-            IMapper mapper, IMailService mailService)
+            IMapper mapper, ISmtpEmailService emailService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
-            _mapper = mapper;
-            _mailService = mailService;
+            _mapper = mapper;     
+            _emailService = emailService;
         }       
 
         public async Task<bool> Login(LoginDto loginDto)
@@ -59,7 +60,7 @@ namespace BusinessLogic.BookingServices
             {
                 try
                 {
-                    await _mailService.SendMailAsync(user.Email, "Реєстрація на сайті Booking.com", "\nКористувач " + user.FirstName + " " + user.LastName + " зареєстрований\nВаш email: " + user.Email + "\nВаш пароль: " + dto.Password);
+                    _emailService.SuccessfulLogin($"Your email: {dto.Email}\nYour password: {dto.Password}", dto.Email);
                 }
                 catch(Exception ex)
                 {
