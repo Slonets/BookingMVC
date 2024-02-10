@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using DataAccess.Entities
+@using Microsoft.AspNetCore.Identity;
+@using BusinessLogic.DTOs.User;
+
+@inject SignInManager<UserEntity> SignInManager
+@inject UserManager<UserEntity> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -7,7 +14,6 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />   
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/New.styles.css" asp-append-version="true" />   
-  
 </head>
 <body>   
     <header class="p-3 text-white bg-dark">
@@ -23,16 +29,32 @@
                     <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-                </ul>
+                </ul>                          
 
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                    <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
-                </form>
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    var user = await UserManager.GetUserAsync(User); 
+                    var roles = await UserManager.GetRolesAsync(user);
+                    var photoUrl = "50_" + user.Image; 
 
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="./images/@photoUrl" alt="@user.FirstName" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small">
+                            <li><a class="dropdown-item" href="#">@user?.FirstName @user?.LastName</a></li>
+                            <li><a class="dropdown-item" href="#">Роль: @foreach (var role in roles){@role}</a></li>
+                            <li><a class="dropdown-item" asp-controller="Account" asp-action="Logout">Вийти</a></li>
+                    </ul>
+                </div>
+                }
+                else
+                {               
                 <div class="text-end">
                     <a type="button" class="btn btn-warning" asp-area="" asp-controller="Account" asp-action="Register">Реєстрація</a>
                     <a type="button" class="btn btn-success me-2" asp-area="" asp-controller="Account" asp-action="Login">Вхід</a>
                 </div>
+                }
             </div>
         </div>
     </header>

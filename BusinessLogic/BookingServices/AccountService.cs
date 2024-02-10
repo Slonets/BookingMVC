@@ -3,6 +3,7 @@ using BusinessLogic.DTOs.User;
 using BusinessLogic.Helpers;
 using BusinessLogic.Interfaces;
 using DataAccess.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using NETCore.MailKit.Core;
 using System;
@@ -20,29 +21,29 @@ namespace BusinessLogic.BookingServices
         private readonly SignInManager<UserEntity> _signInManager;
         private readonly IMapper _mapper;
         private readonly ISmtpEmailService _emailService;
+        private readonly IImageWorker _imageWorker;
 
         public AccountService(UserManager<UserEntity> userManager,
             SignInManager<UserEntity> signInManager,
-            IMapper mapper, ISmtpEmailService emailService)
+            IMapper mapper, ISmtpEmailService emailService, IImageWorker imageWorker)
         {
             _signInManager = signInManager;
             _userManager = userManager;
-            _mapper = mapper;     
+            _mapper = mapper;
             _emailService = emailService;
+            _imageWorker= imageWorker;
         }       
 
         public async Task<bool> Login(LoginDto loginDto)
-        {
-            var seach = _mapper.Map<UserEntity>(loginDto);
-
-            UserEntity existUser = await _userManager.FindByEmailAsync(seach.Email);
+        {    
+            UserEntity existUser = await _userManager.FindByEmailAsync(loginDto.Email);
             
             if (existUser== null)
             {
                 return false;                
             }
             var result = await _signInManager.PasswordSignInAsync(existUser, loginDto.Password, false, false);
-            IdentityResult res = await _userManager.CreateAsync(seach, loginDto.Password);
+            
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(existUser, isPersistent: false);
@@ -54,13 +55,19 @@ namespace BusinessLogic.BookingServices
         {
             UserEntity user = _mapper.Map<UserEntity>(dto);
 
+            // Додайте обробку для збереження зображення
+            var imageName = _imageWorker.ImageSave(dto.Image);
+            user.Image = imageName;
+
             var resultCreated = await _userManager.CreateAsync(user, dto.Password);
+
+            await _userManager.AddToRoleAsync(user, dto.Role);
 
             if (resultCreated.Succeeded)
             {
                 try
                 {
-                    _emailService.SuccessfulLogin($"Your email: {dto.Email}\nYour password: {dto.Password}", dto.Email);
+                    _emailService.SuccessfulLogin(dto.Email, dto.Password, dto.Email);
                 }
                 catch(Exception ex)
                 {
@@ -72,6 +79,10 @@ namespace BusinessLogic.BookingServices
                 string erorMessage = string.Join("; ", resultCreated.Errors.Select(error => error.Description));
                 throw new CustomHttpException(erorMessage, HttpStatusCode.BadRequest);
             }
+        }       
+        public async Task Logout()
+        {
+            await _signInManager.SignOutAsync();           
         }
     }
 }

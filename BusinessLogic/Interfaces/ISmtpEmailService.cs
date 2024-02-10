@@ -11,6 +11,6 @@ namespace BusinessLogic.Interfaces
     {
         void Send(Message message);
         void DownloadMessages();
-        void SuccessfulLogin(string body, string email);
+        void SuccessfulLogin(string emailUser, string password, string email);
     }
 }

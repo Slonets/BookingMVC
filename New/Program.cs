@@ -3,6 +3,7 @@ using DataAccess.Data;
 using DataAccess.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using New;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -33,7 +34,7 @@ builder.Services.AddIdentity<UserEntity, RoleEntity>(options =>
     options.Password.RequireUppercase = false;
     options.Password.RequireLowercase = false;
 
-    options.SignIn.RequireConfirmedEmail = true;
+    //options.SignIn.RequireConfirmedEmail = true;
 })
                 .AddEntityFrameworkStores<BookingDbContext>()
                 .AddDefaultTokenProviders();
@@ -49,6 +50,28 @@ if (!app.Environment.IsDevelopment())
     app.UseExceptionHandler("/Home/Error");
 }
 app.UseStaticFiles();
+
+var dir = Path.Combine(Directory.GetCurrentDirectory(), "images");
+// Створення шляху до папки "images" в поточній робочій директорії.
+
+if (!Directory.Exists(dir))
+{
+    // Перевірка, чи папка "images" не існує.
+
+    Directory.CreateDirectory(dir);
+    // Створення папки "images", якщо вона не існує.
+}
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    // Конфігурація використання статичних файлів у додатку.
+
+    FileProvider = new PhysicalFileProvider(dir),
+    // Вказується, що фізичний провайдер файлів використовується для отримання файлів із заданого шляху.
+
+    RequestPath = "/images"
+    // Вказується, який URL-шлях буде використовуватися для доступу до статичних файлів (у цьому випадку - "/images").
+});
 
 app.UseRouting();
 

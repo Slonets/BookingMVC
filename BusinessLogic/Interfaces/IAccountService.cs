@@ -12,5 +12,6 @@ namespace BusinessLogic.Interfaces
     {       
         Task<bool> Login(LoginDto loginDto);
         Task Registration(RegistedDto registerDto);
+        Task Logout();
     }
 }

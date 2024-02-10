@@ -61,8 +61,7 @@ namespace New
                         LastName = "Підкаблучник",
                         Email = "admin@gmail.com",
                         UserName = "admin@gmail.com",
-                        Image = "admin.webp",
-                        EmailConfirmed = true,
+                        Image = "admin.webp"                                             
                     };
                     var result = userManager.CreateAsync(user, "123456").Result;
                     if (!result.Succeeded)
