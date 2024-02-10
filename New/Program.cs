@@ -1,4 +1,5 @@
 using BusinessLogic;
+using DataAccess;
 using DataAccess.Data;
 using DataAccess.Entities;
 using Microsoft.AspNetCore.Identity;
@@ -9,6 +10,10 @@ using New;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCustomService();
+
+//додаЇмо –епозитор≥й
+
+builder.Services.AddRepository();
 
 builder.Services.CustomMapper();
 

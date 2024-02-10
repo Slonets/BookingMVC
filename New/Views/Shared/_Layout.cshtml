@@ -5,15 +5,20 @@
 @inject SignInManager<UserEntity> SignInManager
 @inject UserManager<UserEntity> UserManager
 
+@{
+    string Roles = "Admin"; 
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - New</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />   
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/New.styles.css" asp-append-version="true" />   
+    <link rel="stylesheet" href="~/New.styles.css" asp-append-version="true" />    
 </head>
 <body>   
     <header class="p-3 text-white bg-dark">
@@ -25,7 +30,22 @@
 
                 <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                     <li><a class="nav-link px-2 text-secondary" asp-controller="Home" asp-action="Index">Головна</a></li>
-                    <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+                    
+                @if (SignInManager.IsSignedIn(User))
+                {
+                        var user = await UserManager.GetUserAsync(User);
+                        var roles = await UserManager.GetRolesAsync(user);
+
+                        @foreach (var role in roles)
+                        {
+                            @if (role.Equals(@Roles))
+                            {
+                                <li><a asp-controller="Admin" asp-action="Index" class="nav-link px-2 text-white">Усі користувачі</a></li>
+                            }
+                        }                       
+                    
+                }   
+                    
                     <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
                     <li><a href="#" class="nav-link px-2 text-white">About</a></li>

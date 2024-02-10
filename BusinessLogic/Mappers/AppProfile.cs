@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BusinessLogic.DTOs;
 using BusinessLogic.DTOs.User;
 using DataAccess.Entities;
 using System;
@@ -31,6 +32,13 @@ namespace BusinessLogic.Mappers
 
             //UserEntity -> LoginDto
             CreateMap<UserEntity, LoginDto>().ReverseMap();
+
+            CreateMap<UserRoleEntityDto, UserRoleEntity>().ReverseMap();
+
+            CreateMap<UserEntity, UserDto>()
+            .ForMember(dest => dest.UserRoles, opt => opt.MapFrom(src => GetRoleFromUserEntity(src)));
+
+            CreateMap<UserDto, UserEntity>().ForMember(dest => dest.UserRoles, opt => opt.Ignore());
 
         }
 
