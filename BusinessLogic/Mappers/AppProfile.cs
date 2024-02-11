@@ -38,7 +38,8 @@ namespace BusinessLogic.Mappers
             CreateMap<UserEntity, UserDto>()
             .ForMember(dest => dest.UserRoles, opt => opt.MapFrom(src => GetRoleFromUserEntity(src)));
 
-            CreateMap<UserDto, UserEntity>().ForMember(dest => dest.UserRoles, opt => opt.Ignore());
+            CreateMap<UserDto, UserEntity>()
+            .ForMember(dest => dest.UserRoles, opt => opt.Ignore());
 
         }
 

@@ -15,10 +15,12 @@ namespace BusinessLogic.BookingServices
     {
         private readonly IRepository<UserEntity> _userEntity;
         private readonly IMapper _mapper;
-        public AdminService(IRepository<UserEntity> userEntity, IMapper mapper)
+        public readonly IImageWorker _imageWorker;
+        public AdminService(IRepository<UserEntity> userEntity, IMapper mapper, IImageWorker imageWorker)
         {
             _userEntity=userEntity;
             _mapper=mapper;
+            _imageWorker=imageWorker;
         }
         public async Task<UserDto> GetId(int id)
         {
@@ -46,7 +48,7 @@ namespace BusinessLogic.BookingServices
         public async Task Delete(int id)
         {
             var seach = await _userEntity.GetByIDAsync(id);
-
+            _imageWorker.RemoveImage(seach.Image);
             await _userEntity.DeleteAsync(seach);
             await _userEntity.SaveAsync();
         }

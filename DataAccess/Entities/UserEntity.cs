@@ -14,8 +14,8 @@ namespace DataAccess.Entities
         public string FirstName { get; set; }
 
         [StringLength(100)]
-        public string LastName { get; set; }
-
+        public string LastName { get; set; }          
+        public string PhoneNumber { get; set; }
         [StringLength(100)]
         public string Image { get; set; }
         public virtual ICollection<UserRoleEntity> UserRoles { get; set; }

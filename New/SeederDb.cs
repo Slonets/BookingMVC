@@ -61,6 +61,7 @@ namespace New
                         LastName = "Підкаблучник",
                         Email = "admin@gmail.com",
                         UserName = "admin@gmail.com",
+                        PhoneNumber="+380-00-00",
                         Image = "admin.png"                                             
                     };
                     var result = userManager.CreateAsync(user, "123456").Result;
