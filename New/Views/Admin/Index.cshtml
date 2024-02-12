@@ -1,5 +1,5 @@
-﻿@using BusinessLogic.DTOs;
-@model List<UserDto>;
+﻿@using BusinessLogic.DTOs
+@model List<UserDto>
 
 <style>
     .img-container img {
@@ -31,19 +31,28 @@
                 <tbody>
                     @foreach (var user in Model)
                     {
-                        var path ="300_"+user.Image;
+                        
                         <tr>
                             <th scope="row">@user.Id</th>
                             <td>
+                               @*  @if (!@user.FirstName.Equals("Валерій"))
+                                { *@
+                                    <div class="img-container">
+                                        <img src="../images/@user.Image" class="card-img-top" alt="...">
+                                    </div>
+                               @*  } *@
+                                @* else
+                                {
                                 <div class="img-container">
-                                    <img src="../images/@path" class="card-img-top" alt="...">
+                                    <img src="../images/@user.Image" class="card-img-top" alt="...">
                                 </div>
+                                } *@
                             </td>
                             <td>@user.FirstName</td>
                             <td>@user.LastName</td>
                             <td>@user.PhoneNumber</td>
                             <td>@user.Email</td>
-                            <td>@user.UserRoles</td>
+                            <td>@user.Roles</td>
                             <td>
 
                                 <div class="btn-group" role="group">

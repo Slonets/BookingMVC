@@ -16,6 +16,6 @@ namespace BusinessLogic.DTOs
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string Image { get; set; }
-        public string UserRoles { get; set; }
+        public string Roles { get; set; }
     }
 }

@@ -30,13 +30,16 @@ namespace BusinessLogic.Mappers
                 .ForMember(dest => dest.Password, opt => opt.Ignore()) // Assuming password won't be mapped back
                 .ForMember(dest => dest.Role, opt => opt.MapFrom(src => GetRoleFromUserEntity(src))); // Assuming a user has one role
 
+
             //UserEntity -> LoginDto
             CreateMap<UserEntity, LoginDto>().ReverseMap();
 
             CreateMap<UserRoleEntityDto, UserRoleEntity>().ReverseMap();
 
             CreateMap<UserEntity, UserDto>()
-            .ForMember(dest => dest.UserRoles, opt => opt.MapFrom(src => GetRoleFromUserEntity(src)));
+                
+            .ForMember(dest => dest.Image, opt => opt.MapFrom(src => "300_"+src.Image))
+            .ForMember(dest => dest.Roles, opt => opt.MapFrom(src => GetRoleFromUserEntity(src)));
 
             CreateMap<UserDto, UserEntity>()
             .ForMember(dest => dest.UserRoles, opt => opt.Ignore());
@@ -45,8 +48,14 @@ namespace BusinessLogic.Mappers
 
         private string GetRoleFromUserEntity(UserEntity userEntity)
         {
+            string result = "";
+            foreach(var role in userEntity.UserRoles)
+            {
+                result += role.Role.Name+" ";
+            }
+
             // Отримання ролі з UserEntity         
-            return userEntity.UserRoles?.FirstOrDefault()?.Role?.Name;
+            return result;
         }       
         
     }

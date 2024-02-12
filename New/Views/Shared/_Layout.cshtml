@@ -6,7 +6,7 @@
 @inject UserManager<UserEntity> UserManager
 
 @{
-    string Roles = "Admin"; 
+    string Admin = "Admin"; 
 }
 
 <!DOCTYPE html>
@@ -38,7 +38,7 @@
 
                         @foreach (var role in roles)
                         {
-                            @if (role.Equals(@Roles))
+                            @if (role.Equals(@Admin))
                             {
                                 <li><a asp-controller="Admin" asp-action="Index" class="nav-link px-2 text-white">Усі користувачі</a></li>
                             }
@@ -59,7 +59,7 @@
 
                 <div class="dropdown text-end">
                     <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="./images/@photoUrl" alt="@user.FirstName" width="32" height="32" class="rounded-circle">
+                            <img src="/images/@photoUrl" alt="@user.FirstName" width="32" height="32" class="rounded-circle">
                     </a>
                     <ul class="dropdown-menu text-small">
                             <li><a class="dropdown-item" href="#">@user?.FirstName @user?.LastName</a></li>

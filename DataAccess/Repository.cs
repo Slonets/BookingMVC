@@ -92,6 +92,9 @@ namespace DataAccess
         {
             await _context.SaveChangesAsync();
         }
+
+        // working with specifications
+
         //Отримати все за відповідними правилами специфікації, які будуть передані
         public async Task<IEnumerable<TEntity>> GetListBySpec(ISpecification<TEntity> specification)
         {
