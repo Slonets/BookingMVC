@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Entities
 {
-    public class Poster
+    public class ViewOfTheHouse
     {
         public int Id { get; set; }
-
+        public string Name { get; set; }
     }
 }

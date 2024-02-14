@@ -22,5 +22,7 @@ namespace DataAccess.Interfaces
         Task SaveAsync();
         Task<TEntity?> GetItemBySpec(ISpecification<TEntity> specification);
         Task<IEnumerable<TEntity>> GetListBySpec(ISpecification<TEntity> specification);
+        IQueryable<TEntity> GetIQueryable();
     }
+
 }

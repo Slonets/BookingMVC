@@ -117,5 +117,9 @@ namespace DataAccess
             var evaluator = new SpecificationEvaluator(); //
             return evaluator.GetQuery(dbSet, specification);
         }
+        public IQueryable<TEntity> GetIQueryable()
+        {
+            return dbSet.AsQueryable();
+        }
     }
 }

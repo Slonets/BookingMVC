@@ -34,19 +34,10 @@
                         
                         <tr>
                             <th scope="row">@user.Id</th>
-                            <td>
-                               @*  @if (!@user.FirstName.Equals("Валерій"))
-                                { *@
+                            <td>                             
                                     <div class="img-container">
                                         <img src="../images/@user.Image" class="card-img-top" alt="...">
-                                    </div>
-                               @*  } *@
-                                @* else
-                                {
-                                <div class="img-container">
-                                    <img src="../images/@user.Image" class="card-img-top" alt="...">
-                                </div>
-                                } *@
+                                    </div>                             
                             </td>
                             <td>@user.FirstName</td>
                             <td>@user.LastName</td>

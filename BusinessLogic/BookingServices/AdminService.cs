@@ -40,7 +40,7 @@ namespace BusinessLogic.BookingServices
         public async Task<ICollection<UserDto>> GetAll()
         {
             //var users = await  _userEntity.GetAsync(null,null, ["UserRoles", "Role"]);
-            var users = await  _userManager.Users
+            var users = await _userEntity.GetIQueryable()
                 .Include(x=>x.UserRoles)
                 .ThenInclude(x=>x.Role)
                 .ToListAsync();
