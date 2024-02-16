@@ -11,12 +11,9 @@
 
 <div class="row">
     <div class="col-md-4 mx-auto mt-5 text-center">
+        @* enctype="multipart/form-data" дозволяє зберігати файли *@
 
-       
-        <form method="post" asp-controller="Account" asp-action="Register">
-
-            @*означає, що виведе усі помилки зверху*@
-            <div asp-validation-summary="All"></div>
+        <form method="post" asp-controller="Account" asp-action="Register" enctype="multipart/form-data">
 
             <div class="mb-4 d-flex justify-content-center">
                 <img src="~/images/register.png" alt="" width="72" height="65">
@@ -24,28 +21,53 @@
 
             <h1 class="h3 mb-3 fw-normal">Регістрація</h1>
 
-            <div class="form-floating">
+            <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="firstName" placeholder="Ім'я" asp-for="FirstName">
                 <label for="firstName">Ім'я</label>
-                <span asp-validation-for="FirstName" class="form-text text-danger"></span>
+                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "form-text text-danger" })
             </div>
 
-            <div class="form-floating">
+            <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="lastName" placeholder="Прізвище" asp-for="LastName">
                 <label for="lastName">Прізвище</label>
-                <span asp-validation-for="LastName" class="form-text text-danger"></span>
+                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "form-text text-danger" })
             </div>
 
-            <div class="form-floating">
+            <div class="form-floating mb-3">
+                <input type="tel" class="form-control" id="phoneNumber" placeholder="Номер телефону" asp-for="PhoneNumber">
+                <label for="phoneNumber">Номер телефону</label>
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "form-text text-danger" })
+            </div>
+
+            <div class="form-floating mb-3">
+                <img id="selectedImage" src="#" alt="Selected Image" style="max-width: 100%; display: none;">
+            </div>
+
+            <div class="col-md-9 mb-3 mx-auto">
+                <label asp-for="Image" for="Image" class="form-label">Виберіть файл для завантаження</label>
+                <input asp-for="Image" type="file" class="form-control" placeholder="Тут має бути посилання на фото" onchange="displayImage(this)">
+                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "form-text text-danger" })
+            </div>            
+
+            <div class="form-floating mb-3">
                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" asp-for="Email">
                 <label for="floatingInput">Email address</label>
-                <span asp-validation-for="Email" class="form-text text-danger"></span>
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "form-text text-danger" })
             </div>
 
-            <div class="form-floating">
+            <div class="form-floating mb-3">
+                <select class="form-control" id="roleSelect" asp-for="Role">
+                    <option value="Admin">Admin</option>
+                    <option value="User">User</option>
+                    <option value="Seller">Seller</option>
+                </select>
+                <label for="roleSelect">Обери роль</label>
+            </div>
+
+            <div class="form-floating mb-3">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password" asp-for="Password">
                 <label for="floatingPassword">Password</label>
-                <span asp-validation-for="Password" class="form-text text-danger"></span>
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "form-text text-danger" })
             </div>
 
             <button class="btn btn-primary w-100 py-2" type="submit">Зареєструватися</button>
@@ -56,3 +78,23 @@
         </form>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        function displayImage(input) {
+            var fileInput = input;
+            var selectedImage = document.getElementById('selectedImage');
+
+            if (fileInput.files && fileInput.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    selectedImage.src = e.target.result;
+                    selectedImage.style.display = 'block';
+                };
+
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        }
+    </script>
+}

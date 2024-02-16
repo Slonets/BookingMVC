@@ -1,0 +1,77 @@
+﻿@using BusinessLogic.DTOs
+@model List<UserDto>
+
+<style>
+    .img-container img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+</style>
+
+<div class="container">
+    @if (Model.Any())
+    {
+        <h3 class="align-content-center">Кількість зареєстрованих користувачів: @Model.Count()</h3>
+        <div class="row">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Fisrt Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">PhoneNumber</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Operations</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        
+                        <tr>
+                            <th scope="row">@user.Id</th>
+                            <td>                             
+                                    <div class="img-container">
+                                        <img src="../images/@user.Image" class="card-img-top" alt="...">
+                                    </div>                             
+                            </td>
+                            <td>@user.FirstName</td>
+                            <td>@user.LastName</td>
+                            <td>@user.PhoneNumber</td>
+                            <td>@user.Email</td>
+                            <td>@user.Roles</td>
+                            <td>
+
+                                <div class="btn-group" role="group">
+                                    <div class="btn-group" role="group">
+                                        <a asp-controller="Admin" asp-action="Edit" asp-route-id=@user.Id class="btn btn-warning">
+                                            Редагувати
+                                            <i class="bi bi-pen bi-2x"></i>
+                                        </a>
+                                    </div>
+                                    <div class="btn-group" role="group">
+                                        <a asp-controller="Admin" asp-action="Remove" asp-route-id=@user.Id class="btn btn-dark">
+                                            Видалити
+                                            <i class="bi bi-trash bi-2x"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                           
+
+                        </tr>
+                    }
+                </tbody>
+            </table>           
+        </div>
+
+    }
+    else
+    {
+        <h3>Users was not found...</h3>
+    }
+</div>

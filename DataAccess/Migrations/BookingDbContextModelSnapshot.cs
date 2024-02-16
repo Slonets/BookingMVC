@@ -22,6 +22,79 @@ namespace DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("DataAccess.Entities.BuildingEntity", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<double>("Area")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("NumberOfRooms")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Price")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TypeOfSaleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ViewOfTheHouseId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TypeOfSaleId");
+
+                    b.HasIndex("UserEntityId");
+
+                    b.HasIndex("ViewOfTheHouseId");
+
+                    b.ToTable("Buildings");
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.ImagesBulding", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BuildingEntityId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Path")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BuildingEntityId");
+
+                    b.ToTable("ImagesBuldings");
+                });
+
             modelBuilder.Entity("DataAccess.Entities.RoleEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -52,6 +125,23 @@ namespace DataAccess.Migrations
                     b.ToTable("AspNetRoles", (string)null);
                 });
 
+            modelBuilder.Entity("DataAccess.Entities.TypeOfSale", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TypeOfSale");
+                });
+
             modelBuilder.Entity("DataAccess.Entities.UserEntity", b =>
                 {
                     b.Property<int>("Id")
@@ -75,14 +165,17 @@ namespace DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Image")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -104,6 +197,7 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
@@ -145,6 +239,23 @@ namespace DataAccess.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.ViewOfTheHouse", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ViewOfTheHouse");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
@@ -239,6 +350,44 @@ namespace DataAccess.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("DataAccess.Entities.BuildingEntity", b =>
+                {
+                    b.HasOne("DataAccess.Entities.TypeOfSale", "TypeOfSale")
+                        .WithMany()
+                        .HasForeignKey("TypeOfSaleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataAccess.Entities.UserEntity", "UserEntity")
+                        .WithMany()
+                        .HasForeignKey("UserEntityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("DataAccess.Entities.ViewOfTheHouse", "ViewOfTheHouse")
+                        .WithMany()
+                        .HasForeignKey("ViewOfTheHouseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TypeOfSale");
+
+                    b.Navigation("UserEntity");
+
+                    b.Navigation("ViewOfTheHouse");
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.ImagesBulding", b =>
+                {
+                    b.HasOne("DataAccess.Entities.BuildingEntity", "Buildings")
+                        .WithMany("ImagesBulding")
+                        .HasForeignKey("BuildingEntityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Buildings");
+                });
+
             modelBuilder.Entity("DataAccess.Entities.UserRoleEntity", b =>
                 {
                     b.HasOne("DataAccess.Entities.RoleEntity", "Role")
@@ -292,6 +441,11 @@ namespace DataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("DataAccess.Entities.BuildingEntity", b =>
+                {
+                    b.Navigation("ImagesBulding");
                 });
 
             modelBuilder.Entity("DataAccess.Entities.RoleEntity", b =>

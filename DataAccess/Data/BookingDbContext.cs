@@ -18,6 +18,11 @@ namespace DataAccess.Data
         public BookingDbContext(DbContextOptions<BookingDbContext> options)
         : base(options) { }
 
+        public DbSet<BuildingEntity> Buildings { get; set; }
+        public DbSet<TypeOfSale> TypeOfSale { get; set; }
+        public DbSet<ViewOfTheHouse> ViewOfTheHouse { get; set; }
+        public DbSet<ImagesBulding> ImagesBuldings { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

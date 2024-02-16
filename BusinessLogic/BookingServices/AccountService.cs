@@ -3,7 +3,9 @@ using BusinessLogic.DTOs.User;
 using BusinessLogic.Helpers;
 using BusinessLogic.Interfaces;
 using DataAccess.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using NETCore.MailKit.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,30 +20,30 @@ namespace BusinessLogic.BookingServices
         private readonly UserManager<UserEntity> _userManager;
         private readonly SignInManager<UserEntity> _signInManager;
         private readonly IMapper _mapper;
-        private readonly IMailService _mailService;
+        private readonly ISmtpEmailService _emailService;
+        private readonly IImageWorker _imageWorker;
 
         public AccountService(UserManager<UserEntity> userManager,
             SignInManager<UserEntity> signInManager,
-            IMapper mapper, IMailService mailService)
+            IMapper mapper, ISmtpEmailService emailService, IImageWorker imageWorker)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _mapper = mapper;
-            _mailService = mailService;
+            _emailService = emailService;
+            _imageWorker= imageWorker;
         }       
 
         public async Task<bool> Login(LoginDto loginDto)
-        {
-            var seach = _mapper.Map<UserEntity>(loginDto);
-
-            UserEntity existUser = await _userManager.FindByEmailAsync(seach.Email);
+        {    
+            UserEntity existUser = await _userManager.FindByEmailAsync(loginDto.Email);
             
             if (existUser== null)
             {
                 return false;                
             }
             var result = await _signInManager.PasswordSignInAsync(existUser, loginDto.Password, false, false);
-            IdentityResult res = await _userManager.CreateAsync(seach, loginDto.Password);
+            
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(existUser, isPersistent: false);
@@ -53,13 +55,19 @@ namespace BusinessLogic.BookingServices
         {
             UserEntity user = _mapper.Map<UserEntity>(dto);
 
+            // Додайте обробку для збереження зображення
+            var imageName = _imageWorker.ImageSave(dto.Image);
+            user.Image = imageName;
+
             var resultCreated = await _userManager.CreateAsync(user, dto.Password);
+
+            await _userManager.AddToRoleAsync(user, dto.Role);
 
             if (resultCreated.Succeeded)
             {
                 try
                 {
-                    await _mailService.SendMailAsync(user.Email, "Реєстрація на сайті Booking.com", "\nКористувач " + user.FirstName + " " + user.LastName + " зареєстрований\nВаш email: " + user.Email + "\nВаш пароль: " + dto.Password);
+                    _emailService.SuccessfulLogin(dto.Email, dto.Password, dto.Email);
                 }
                 catch(Exception ex)
                 {
@@ -71,6 +79,10 @@ namespace BusinessLogic.BookingServices
                 string erorMessage = string.Join("; ", resultCreated.Errors.Select(error => error.Description));
                 throw new CustomHttpException(erorMessage, HttpStatusCode.BadRequest);
             }
+        }       
+        public async Task Logout()
+        {
+            await _signInManager.SignOutAsync();           
         }
     }
 }

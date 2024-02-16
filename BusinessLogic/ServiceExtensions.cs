@@ -1,5 +1,7 @@
 ﻿using BusinessLogic.BookingServices;
 using BusinessLogic.Interfaces;
+using DataAccess.Interfaces;
+using DataAccess;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -14,8 +16,9 @@ namespace BusinessLogic
         public static void AddCustomService(this IServiceCollection servicesCollection)
         {
             servicesCollection.AddScoped<IAccountService, AccountService>();
-            servicesCollection.AddScoped<IMailService, MailService>();
-
+            servicesCollection.AddScoped<ISmtpEmailService, SmtpEmailService>();
+            servicesCollection.AddScoped<IImageWorker, ImageWorker>();
+            servicesCollection.AddScoped<IAdmin, AdminService>();          
         }
 
         public static void CustomMapper(this IServiceCollection servicesCollection)

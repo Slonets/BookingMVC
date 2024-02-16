@@ -1,0 +1,118 @@
+﻿@using BusinessLogic.DTOs
+@model UserDto
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // При виборі файлу або завантаженні сторінки
+        $('input[type="file"]').change(function () {
+            showPreviewImage(this);
+        });
+
+        // Показати попередній перегляд при завантаженні сторінки (якщо зображення вже мається)
+        showPreviewImage($('input[type="file"]')[0]);
+
+        function showPreviewImage(input) {
+            var previewImage = $('#previewImage');
+            var previewContainer = $('#previewContainer');
+
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImage.attr('src', e.target.result);
+                    previewImage.css({ 'width': '200px', 'height': 'auto' });
+                    previewContainer.show(); // Показати контейнер зображення
+                }
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                // Якщо зображення вже мається (не змінюється)
+                previewImage.attr('src', previewImage.data('default-src'));
+                previewContainer.show(); // Показати контейнер зображення
+            }
+        }
+    });
+</script>
+
+<div class="row">
+    <div class="col-md-4 mx-auto mt-5 text-center">
+
+        <h4>Редагування користувача @Model.LastName @Model.FirstName</h4>
+
+        @*форма відправляє дані на контролер Admin за методом post*@
+
+        <form method="post" asp-controller="Admin" asp-action="Edit" enctype="multipart/form-data">
+
+            @*означає, що виведе усі помилки зверху*@
+            <div asp-validation-summary="All"></div>
+
+            <div class="mb-4">
+                <div class="d-flex justify-content-center">
+                    <label asp-for="FirstName" for="FirstName" class="form-label">Ім'я</label>
+                </div>
+                <div>
+                    <input asp-for="FirstName" type="text" class="form-control" value="@Model.FirstName">
+                    <span asp-validation-for="FirstName" class="form-text text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <div class="d-flex justify-content-center">
+                    <label asp-for="LastName" for="LastName" class="form-label">Прізвище</label>
+                </div>
+                <div>
+                    <input asp-for="LastName" type="text" class="form-control" value="@Model.LastName">
+                    <span asp-validation-for="LastName" class="form-text text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <div class="d-flex justify-content-center">
+                    <label asp-for="PhoneNumber" for="PhoneNumber" class="form-label">Номер телефону</label>
+                </div>
+                <div>
+                    <input asp-for="PhoneNumber" type="tel" class="form-control" value="@Model.PhoneNumber">
+                    <span asp-validation-for="PhoneNumber" class="form-text text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <div class="d-flex justify-content-center">
+                    <label asp-for="Email" for="Email" class="form-label">Email</label>
+                </div>
+                <div>
+                    <input asp-for="Email" type="email" class="form-control" value="@Model.Email">
+                    <span asp-validation-for="Email" class="form-text text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-md-9 mb-3 mx-auto">
+                <div id="previewContainer" style="display: none;">
+                    <img id="previewImage" src="@Url.Content($"~/images/{Model.Image}")" class="card-img-top" data-default-src="@Url.Content($"~/images/{Model.Image}")" />
+                </div>
+                <label asp-for="Image" class="form-label">Фото</label>
+                <input asp-for="Image" type="file" class="form-control">
+            </div>
+
+            <div class="form-floating mb-3">
+                <div class="d-flex justify-content-center">
+                    <label for="roleSelect">Обери роль</label>
+                </div>
+                <div>
+                    <select class="form-control" id="roleSelect" asp-for="@Model.Roles">
+                        <option value="Admin">Admin</option>
+                        <option value="User">User</option>
+                        <option value="Seller">Seller</option>
+                    </select>
+                    <span asp-validation-for="Roles" class="form-text text-danger"></span>
+                </div>
+            </div>
+
+            @*   клас кнопки сабміт говорить, що воно відправляє дані на сервер*@
+            <div class="col-12 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Зберегти</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
