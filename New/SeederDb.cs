@@ -111,16 +111,10 @@ namespace New
                     ViewOfTheHouse house2 = new ViewOfTheHouse
                     {
                         Name = "Квартира"
-                    };
-
-                    ViewOfTheHouse house3 = new ViewOfTheHouse
-                    {
-                        Name = "Котедж"
-                    };
+                    };                    
 
                     context.ViewOfTheHouse.Add(house1);
-                    context.ViewOfTheHouse.Add(house2);
-                    context.ViewOfTheHouse.Add(house3);
+                    context.ViewOfTheHouse.Add(house2);                    
                     context.SaveChanges();
                 }
 
