@@ -34,8 +34,8 @@ namespace BusinessLogic.BookingServices
         }
         public async Task<ICollection<BuildingDto>> GetAll()
         {
-            var buildings = await _buildingEntity.GetAsync();               
-
+            var buildings = await _buildingEntity.GetAsync();
+            
             return _mapper.Map<List<BuildingDto>>(buildings);
         }
 
