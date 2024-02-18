@@ -1,3 +1,4 @@
+using BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using New.Models;
 using System.Diagnostics;
@@ -6,16 +7,16 @@ namespace New.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IBuilding _building;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IBuilding building)
         {
-            _logger = logger;
+            _building = building;
         }
 
-        public IActionResult Index()
+        public async Task< IActionResult> Index()
         {
-            return View();
+            return View(await _building.GetAll());
         }
 
         public IActionResult Privacy()

@@ -18,7 +18,8 @@ namespace BusinessLogic
             servicesCollection.AddScoped<IAccountService, AccountService>();
             servicesCollection.AddScoped<ISmtpEmailService, SmtpEmailService>();
             servicesCollection.AddScoped<IImageWorker, ImageWorker>();
-            servicesCollection.AddScoped<IAdmin, AdminService>();          
+            servicesCollection.AddScoped<IAdmin, AdminService>();
+            servicesCollection.AddScoped<IBuilding, BuildingService>();
         }
 
         public static void CustomMapper(this IServiceCollection servicesCollection)

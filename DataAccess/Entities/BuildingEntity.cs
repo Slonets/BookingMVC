@@ -17,10 +17,10 @@ namespace DataAccess.Entities
         public string Description { get; set; }
         public double Area { get; set; }
         [StringLength(100)]
-        public string Address { get; set; }
+        public string Address { get; set; }        
+        public int? NumberOfRooms { get; set; }
         [ForeignKey("ViewOfTheHouse")]
         public int ViewOfTheHouseId { get; set; }
-        public int? NumberOfRooms { get; set; }
         public ViewOfTheHouse ViewOfTheHouse { get; set; }
         [ForeignKey("TypeOfSale")]
         public int TypeOfSaleId { get; set; }

@@ -44,23 +44,25 @@ namespace BusinessLogic.Mappers
             CreateMap<UserDto, UserEntity>()
             .ForMember(dest => dest.UserRoles, opt => opt.Ignore());
 
-            CreateMap<BuildingEntity, BuildingDto>()
-            .ForMember(dest => dest.ViewOfTheHouseId, opt => opt.MapFrom(src => src.ViewOfTheHouse))
-            .ForMember(dest => dest.TypeOfSaleId, opt => opt.MapFrom(src => src.TypeOfSale))
-            .ForMember(dest => dest.UserEntityId, opt => opt.MapFrom(src => src.UserEntity));
 
             CreateMap<BuildingDto, BuildingEntity>()
                 .ForMember(dest => dest.ViewOfTheHouse, opt => opt.Ignore())
                 .ForMember(dest => dest.TypeOfSale, opt => opt.Ignore())
                 .ForMember(dest => dest.UserEntity, opt => opt.Ignore());
 
-            CreateMap<ImagesBulding, ImagesBuildingDto>()
-            .ForMember(dest => dest.BuildingEntityId, opt => opt.MapFrom(src => src.BuildingEntityId));
 
-            CreateMap<ImagesBuildingDto, ImagesBulding>()
-                .ForMember(dest => dest.BuildingEntityId, opt => opt.MapFrom(src => src.BuildingEntityId))
-                .ForMember(dest => dest.Buildings, opt => opt.Ignore());
+            CreateMap<BuildingEntity, BuildingDto>()
+            .ForMember(dest => dest.ViewOfTheHouse, opt => opt.MapFrom(src => GetNameBuilding(src)))
+            .ForMember(dest => dest.TypeOfSale, opt => opt.MapFrom(src => src.TypeOfSale.Name))
+            .ForMember(dest => dest.UserEntity, opt => opt.MapFrom(src => src.UserEntity.FirstName + "" + src.UserEntity.LastName))
+            .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.ImagesBulding.FirstOrDefault().Path));
+        }
 
+        public string GetNameBuilding(BuildingEntity buildingEntity)
+        {
+            string result = buildingEntity.ViewOfTheHouse.Name;            
+
+            return result;
         }
 
         private string GetRoleFromUserEntity(UserEntity userEntity)

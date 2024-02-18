@@ -13,11 +13,11 @@ namespace BusinessLogic.DTOs
         public string Description { get; set; }
         public double Area { get; set; }
         public string Address { get; set; }
-        public int ViewOfTheHouseId { get; set; }
+        public string ViewOfTheHouse { get; set; }
         public int? NumberOfRooms { get; set; }
-        public int TypeOfSaleId { get; set; }
+        public string TypeOfSale { get; set; }
         public int Price { get; set; }
-        public int UserEntityId { get; set; }
-        public ICollection<ImagesBuildingDto> ImagesBuilding { get; set; } 
+        public string UserEntity { get; set; }
+        public string Image { get; set; } 
     }
 }
