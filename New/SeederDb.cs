@@ -135,13 +135,13 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path ="https://ireland.apollo.olxcdn.com/v1/files/z4r8l4g61tpz2-UA/image"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/8k8r1e94ai0a2-UA/image"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/e1ekh37ciabj1-UA/image"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/yu0u2fhv1iy73-UA/image"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/eudy2g6be7nu3-UA/image"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/nin5psvtmutd3-UA/image"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/j4e3swkne0mm3-UA/image"}
+                                new ImagesBulding() {Path =imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/z4r8l4g61tpz2-UA/image")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/8k8r1e94ai0a2-UA/image")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/e1ekh37ciabj1-UA/image")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/yu0u2fhv1iy73-UA/image")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/eudy2g6be7nu3-UA/image")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/nin5psvtmutd3-UA/image")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/j4e3swkne0mm3-UA/image")}
                             }
                         },
 
@@ -158,20 +158,20 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path ="https://ireland.apollo.olxcdn.com/v1/files/kp843omm12d61-UA/image"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/mkkzw39m5zxo2-UA/image;s=1000x700"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/5cjnlbgagx661-UA/image;s=1000x700"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/zcvndtbfom532-UA/image;s=1000x700"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/jra72hb2bi31-UA/image;s=1000x700"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/rvddmafc13iu-UA/image;s=1000x700"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/v04h7pgfyc2l2-UA/image;s=1000x700"}
+                                new ImagesBulding() {Path =imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/kp843omm12d61-UA/image")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/mkkzw39m5zxo2-UA/image;s=1000x700")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/5cjnlbgagx661-UA/image;s=1000x700")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/zcvndtbfom532-UA/image;s=1000x700")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/jra72hb2bi31-UA/image;s=1000x700")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/rvddmafc13iu-UA/image;s=1000x700")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/v04h7pgfyc2l2-UA/image;s=1000x700")}
                             }
                         },
 
                           new BuildingEntity
                         {
                             Name="Елітна квартира в новобудові",
-                            Description="Хороший невисокий поверх 2 з 5.\nКвартира з новим сучасним якісним ремонтом:на стінах декоративна штукатурка 4(дихаюча,екологічно чиста, гарно миється)\r\nПідлога ламінат та керамічна плитка(Польща)\nБроньовані двері\nЕнергозберігаючі вікна\nКвартира має гарний вигляд з вікна\nВиходить на південну сторону\nУкомплектована новими меблями та технікою, цікавими деталями інтер'єру.\nДуже зручне розташування-поруч зупики. До центру міста 2 зупинки\nВідеодомофон та Відео нагляд\nВхід за картками",
+                            Description="✓ Хороший невисокий поверх 2 з 5.\n✓ Квартира з новим сучасним якісним ремонтом:на стінах декоративна штукатурка 4(дихаюча,екологічно чиста, гарно миється)\n✓Підлога ламінат та керамічна плитка(Польща)\n✓Броньовані двері\n✓Енергозберігаючі вікна\n✓Квартира має гарний вигляд з вікна\n✓Виходить на південну сторону\n✓Укомплектована новими меблями та технікою, цікавими деталями інтер'єру.\n✓Дуже зручне розташування-поруч зупики. До центру міста 2 зупинки\n✓Відеодомофон та Відео нагляд\n✓Вхід за картками",
                             Address="Рівне, вул. Чехова 17-А",
                             Area=71,
                             NumberOfRooms=2,
@@ -181,13 +181,13 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path ="https://ireland.apollo.olxcdn.com/v1/files/eqg83j2zxsa1-UA/image;s=1000x700"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/5ohbajajybhy-UA/image;s=1000x700"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/f0uprxoce5tw2-UA/image;s=1000x700"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/k9omtl7bvzr41-UA/image;s=1000x700"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/f5p23hlyt07p-UA/image;s=1000x700"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/rvddmafc13iu-UA/image;s=1000x700"},
-                                new ImagesBulding() {Path="https://ireland.apollo.olxcdn.com/v1/files/bu487i39myyw2-UA/image;s=1000x700"}
+                                new ImagesBulding() {Path =imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/eqg83j2zxsa1-UA/image;s=1000x700")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/5ohbajajybhy-UA/image;s=1000x700")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/f0uprxoce5tw2-UA/image;s=1000x700")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/k9omtl7bvzr41-UA/image;s=1000x700")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/f5p23hlyt07p-UA/image;s=1000x700")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/rvddmafc13iu-UA/image;s=1000x700")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://ireland.apollo.olxcdn.com/v1/files/bu487i39myyw2-UA/image;s=1000x700")}
                             }
                         },
 
@@ -204,12 +204,12 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path ="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-naberejnaya-ulitsa__231087156xl.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-naberejnaya-ulitsa__231087158xl.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-naberejnaya-ulitsa__231087165fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-naberejnaya-ulitsa__231087173fx.webp" },
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-naberejnaya-ulitsa__231087191fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-naberejnaya-ulitsa__231087212fx.webp"}                                
+                                new ImagesBulding() {Path =imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-naberejnaya-ulitsa__231087156xl.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-naberejnaya-ulitsa__231087158xl.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-naberejnaya-ulitsa__231087165fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-naberejnaya-ulitsa__231087173fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-naberejnaya-ulitsa__231087191fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-naberejnaya-ulitsa__231087212fx.webp")}                                
                             }
                         },
 
@@ -226,10 +226,10 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path ="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-koroleva-ulitsa__273215593xl.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-koroleva-ulitsa__273497871xl.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-koroleva-ulitsa__273215615fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-koroleva-ulitsa__273497895fx.webp"}
+                                new ImagesBulding() {Path =imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-koroleva-ulitsa__273215593xl.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-koroleva-ulitsa__273497871xl.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-koroleva-ulitsa__273215615fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-koroleva-ulitsa__273497895fx.webp")}
                             }
                         },
 
@@ -246,12 +246,12 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path ="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-knyazya-romana-prospekt__229024368fx.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-knyazya-romana-prospekt__229024335fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-knyazya-romana-prospekt__229024339fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-knyazya-romana-prospekt__229024346fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-knyazya-romana-prospekt__229024349fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-knyazya-romana-prospekt__229024366fx.webp"}
+                                new ImagesBulding() {Path =imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-knyazya-romana-prospekt__229024368fx.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-knyazya-romana-prospekt__229024335fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-knyazya-romana-prospekt__229024339fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-knyazya-romana-prospekt__229024346fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-knyazya-romana-prospekt__229024349fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-knyazya-romana-prospekt__229024366fx.webp")}
                             }
                         },
 
@@ -268,12 +268,12 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path ="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-gagarina-ulitsa__246842161fx.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-gagarina-ulitsa__246842166fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-gagarina-ulitsa__246842169fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-gagarina-ulitsa__246842172fx.webp" },
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-gagarina-ulitsa__246842182fx.webp" },
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-gagarina-ulitsa__246842217fx.webp" }
+                                new ImagesBulding() {Path =imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-gagarina-ulitsa__246842161fx.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-gagarina-ulitsa__246842166fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-gagarina-ulitsa__246842169fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-gagarina-ulitsa__246842172fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-gagarina-ulitsa__246842182fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-chayka-gagarina-ulitsa__246842217fx.webp")}
                             }
                         },
 
@@ -290,12 +290,12 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path ="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-vidinskaya-kurchatova-ulitsa__278014376xl.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-vidinskaya-kurchatova-ulitsa__278014378fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-vidinskaya-kurchatova-ulitsa__278014382fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-vidinskaya-kurchatova-ulitsa__278014383fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-vidinskaya-kurchatova-ulitsa__278014384fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-vidinskaya-kurchatova-ulitsa__278014389fx.webp"}
+                                new ImagesBulding() {Path =imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-vidinskaya-kurchatova-ulitsa__278014376xl.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-vidinskaya-kurchatova-ulitsa__278014378fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-vidinskaya-kurchatova-ulitsa__278014382fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-vidinskaya-kurchatova-ulitsa__278014383fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-vidinskaya-kurchatova-ulitsa__278014384fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-vidinskaya-kurchatova-ulitsa__278014389fx.webp")}
                             }
                         },
 
@@ -312,13 +312,13 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path ="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502170fx.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502173fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502174fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502186fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502184fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502187fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502190fx.webp"}
+                                new ImagesBulding() {Path =imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502170fx.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502173fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502174fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502186fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502184fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502187fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tsentr-avkazkaya-lia__277502190fx.webp")}
                             }
                         },
 
@@ -335,13 +335,13 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path ="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__268668076fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__268668070fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__268668071fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__273545477fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__268668072fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__273545476fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__273545490fx.webp"}
+                                new ImagesBulding() {Path =imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__268668076fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__268668070fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__268668071fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__273545477fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__268668072fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__273545476fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-tyinnoe-dbenkiy-peelok__273545490fx.webp")}
                             }
                         },
 
@@ -358,12 +358,12 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {                             
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-kulika-i-gudacheka-makarova-ulitsa__278147981fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-kulika-i-gudacheka-makarova-ulitsa__278147983fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-kulika-i-gudacheka-makarova-ulitsa__278147985fx.webp" },
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-kulika-i-gudacheka-makarova-ulitsa__278147979fx.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-kulika-i-gudacheka-makarova-ulitsa__278147989fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-kulika-i-gudacheka-makarova-ulitsa__278147990fx.webp"}
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-kulika-i-gudacheka-makarova-ulitsa__278147981fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-kulika-i-gudacheka-makarova-ulitsa__278147983fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-kulika-i-gudacheka-makarova-ulitsa__278147985fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-kulika-i-gudacheka-makarova-ulitsa__278147979fx.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-kulika-i-gudacheka-makarova-ulitsa__278147989fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-kulika-i-gudacheka-makarova-ulitsa__278147990fx.webp")}
                             }
                         },
 
@@ -380,12 +380,12 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-mototrek-iosifa-draganchuka-ulitsa__260440897fx.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-mototrek-iosifa-draganchuka-ulitsa__260443539fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-mototrek-iosifa-draganchuka-ulitsa__260444947fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-mototrek-iosifa-draganchuka-ulitsa__260445781fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-mototrek-iosifa-draganchuka-ulitsa__260445835fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-mototrek-iosifa-draganchuka-ulitsa__260445838fx.webp"}
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-mototrek-iosifa-draganchuka-ulitsa__260440897fx.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-mototrek-iosifa-draganchuka-ulitsa__260443539fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-mototrek-iosifa-draganchuka-ulitsa__260444947fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-mototrek-iosifa-draganchuka-ulitsa__260445781fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-mototrek-iosifa-draganchuka-ulitsa__260445835fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-mototrek-iosifa-draganchuka-ulitsa__260445838fx.webp")}
                             }
                         },
                           new BuildingEntity
@@ -401,11 +401,11 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-pivzavod-dvoretskaya-ulitsa__278013977fx.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-pivzavod-dvoretskaya-ulitsa__278013978fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-pivzavod-dvoretskaya-ulitsa__278013981fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-pivzavod-dvoretskaya-ulitsa__278013982fx.webp" },
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-pivzavod-dvoretskaya-ulitsa__278013986fx.webp"}
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-pivzavod-dvoretskaya-ulitsa__278013977fx.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-pivzavod-dvoretskaya-ulitsa__278013978fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-pivzavod-dvoretskaya-ulitsa__278013981fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-pivzavod-dvoretskaya-ulitsa__278013982fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-pivzavod-dvoretskaya-ulitsa__278013986fx.webp")}
                             }
                         },
 
@@ -422,12 +422,12 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-nazara-nebojinskogo-pavlyuchenko-ulitsa__230220183fx.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-nazara-nebojinskogo-pavlyuchenko-ulitsa__230220180fx.webp" },
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-nazara-nebojinskogo-pavlyuchenko-ulitsa__230220185fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-nazara-nebojinskogo-pavlyuchenko-ulitsa__230220191fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-nazara-nebojinskogo-pavlyuchenko-ulitsa__230220205fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-nazara-nebojinskogo-pavlyuchenko-ulitsa__230220209fx.webp"}
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-nazara-nebojinskogo-pavlyuchenko-ulitsa__230220183fx.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-nazara-nebojinskogo-pavlyuchenko-ulitsa__230220180fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-nazara-nebojinskogo-pavlyuchenko-ulitsa__230220185fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-nazara-nebojinskogo-pavlyuchenko-ulitsa__230220191fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-nazara-nebojinskogo-pavlyuchenko-ulitsa__230220205fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-boyarka-nazara-nebojinskogo-pavlyuchenko-ulitsa__230220209fx.webp")}
                             }
                         },
 
@@ -444,11 +444,11 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-severnyiy-eneala-bezka-popek__244132906fx.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-severnyiy-eneala-bezka-popek__244132905fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-severnyiy-eneala-bezka-popek__244132904fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-severnyiy-eneala-bezka-popek__244132908fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-severnyiy-eneala-bezka-popek__244146753fx.webp"}
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-severnyiy-eneala-bezka-popek__244132906fx.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-severnyiy-eneala-bezka-popek__244132905fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-severnyiy-eneala-bezka-popek__244132904fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-severnyiy-eneala-bezka-popek__244132908fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-kvartira-rovno-severnyiy-eneala-bezka-popek__244146753fx.webp")}
                             }
                         },
                            
@@ -464,12 +464,12 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-gidropark-krasilnikova-ulitsa__273750134fx.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-gidropark-krasilnikova-ulitsa__273750141fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-gidropark-krasilnikova-ulitsa__273750143fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-gidropark-krasilnikova-ulitsa__273750149fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-gidropark-krasilnikova-ulitsa__273750155fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-gidropark-krasilnikova-ulitsa__273750160fx.webp" }
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-gidropark-krasilnikova-ulitsa__273750134fx.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-gidropark-krasilnikova-ulitsa__273750141fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-gidropark-krasilnikova-ulitsa__273750143fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-gidropark-krasilnikova-ulitsa__273750149fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-gidropark-krasilnikova-ulitsa__273750155fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-gidropark-krasilnikova-ulitsa__273750160fx.webp")}
                             }
                         },
 
@@ -485,11 +485,11 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-lenokombinat-enokombinaovkaya-lia__277513662fx.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-lenokombinat-enokombinaovkaya-lia__277477705fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-lenokombinat-enokombinaovkaya-lia__277477707fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-lenokombinat-enokombinaovkaya-lia__277477720fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-lenokombinat-enokombinaovkaya-lia__277513701fx.webp"}
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-lenokombinat-enokombinaovkaya-lia__277513662fx.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-lenokombinat-enokombinaovkaya-lia__277477705fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-lenokombinat-enokombinaovkaya-lia__277477707fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-lenokombinat-enokombinaovkaya-lia__277477720fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-lenokombinat-enokombinaovkaya-lia__277513701fx.webp")}
                             }
                         },
 
@@ -505,11 +505,11 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-basov-ugol-povl-zainiy__226125369fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-basov-ugol-povl-zainiy__226125377fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-basov-ugol-povl-zainiy__226125386fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-basov-ugol-povl-zainiy__226125393fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-basov-ugol-povl-zainiy__226125396fx.webp"}
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-basov-ugol-povl-zainiy__226125369fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-basov-ugol-povl-zainiy__226125377fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-basov-ugol-povl-zainiy__226125386fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-basov-ugol-povl-zainiy__226125393fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-basov-ugol-povl-zainiy__226125396fx.webp")}
                             }
                         },
 
@@ -525,11 +525,11 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-schastlivoe-nadvornaya-ulitsa__188818380fx.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-schastlivoe-nadvornaya-ulitsa__188818400fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-schastlivoe-nadvornaya-ulitsa__188818405fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-schastlivoe-nadvornaya-ulitsa__188818415fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-schastlivoe-nadvornaya-ulitsa__188818419fx.webp"}
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-schastlivoe-nadvornaya-ulitsa__188818380fx.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-schastlivoe-nadvornaya-ulitsa__188818400fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-schastlivoe-nadvornaya-ulitsa__188818405fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-schastlivoe-nadvornaya-ulitsa__188818415fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-dom-rovno-schastlivoe-nadvornaya-ulitsa__188818419fx.webp")}
                             }
                         },
 
@@ -545,27 +545,27 @@ namespace New
                             UserEntityId=1,
                             ImagesBulding= new List<ImagesBulding>()
                             {
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-taunhaus-rovno-schastlivoe-rojdestvenskaya-ulitsa__273685052fx.jpg"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-taunhaus-rovno-schastlivoe-rojdestvenskaya-ulitsa__273685066fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-taunhaus-rovno-schastlivoe-rojdestvenskaya-ulitsa__273685116fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-taunhaus-rovno-schastlivoe-rojdestvenskaya-ulitsa__273685219fx.webp"},
-                                new ImagesBulding() {Path="https://cdn.riastatic.com/photosnew/dom/photo/prodaja-taunhaus-rovno-schastlivoe-rojdestvenskaya-ulitsa__273685222fx.webp"}
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-taunhaus-rovno-schastlivoe-rojdestvenskaya-ulitsa__273685052fx.jpg")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-taunhaus-rovno-schastlivoe-rojdestvenskaya-ulitsa__273685066fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-taunhaus-rovno-schastlivoe-rojdestvenskaya-ulitsa__273685116fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-taunhaus-rovno-schastlivoe-rojdestvenskaya-ulitsa__273685219fx.webp")},
+                                new ImagesBulding() {Path=imageWorker.ImageSave("https://cdn.riastatic.com/photosnew/dom/photo/prodaja-taunhaus-rovno-schastlivoe-rojdestvenskaya-ulitsa__273685222fx.webp")}
                             }
                         }
                     };
 
                     //Вантажимо нові фото з обєкту BuildingEntity                    
-                    foreach (var building in buildingsArray)
-                    {
-                        foreach (var image in building.ImagesBulding)
-                        {
-                             var path = image.Path;                            
+                    //foreach (var building in buildingsArray)
+                    //{
+                    //    foreach (var image in building.ImagesBulding)
+                    //    {
+                    //         var path = image.Path;                            
 
-                            // Тут ви можете використовувати path за вашим призначенням
-                            // Наприклад, додати шлях в imageWorker
-                            imageWorker.ImageSave(path);
-                        }
-                    }
+                    //        // Тут ви можете використовувати path за вашим призначенням
+                    //        // Наприклад, додати шлях в imageWorker
+                    //        imageWorker.ImageSave(path);                            
+                    //    }
+                    //}
 
                     // Додаємо всі об'єкти з масиву до бази даних
                     context.Buildings.AddRange(buildingsArray);

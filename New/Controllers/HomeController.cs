@@ -13,10 +13,15 @@ namespace New.Controllers
         {
             _building = building;
         }
-
+        [HttpGet]
         public async Task< IActionResult> Index()
         {
             return View(await _building.GetAll());
+        }
+        [HttpGet]
+        public async Task<IActionResult> DetailCard(int id)
+        {
+            return View(await _building.GetId(id));
         }
 
         public IActionResult Privacy()

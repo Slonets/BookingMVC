@@ -30,6 +30,14 @@ namespace BusinessLogic.BookingServices
         {
             var building = await _buildingEntity.GetByIDAsync(id);
 
+            // Використовуємо GetIQueryable для завантаження пов'язаних об'єктів
+            await _buildingEntity.GetIQueryable()
+                .Include(x => x.ImagesBulding)
+                .Include(x => x.ViewOfTheHouse)
+                .Include(x => x.TypeOfSale)
+                .Include(x => x.UserEntity)
+                .FirstOrDefaultAsync(x => x.Id == id);
+
             return _mapper.Map<BuildingDto>(building);
         }
         public async Task<ICollection<BuildingDto>> GetAll()

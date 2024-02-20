@@ -18,6 +18,7 @@ namespace BusinessLogic.DTOs
         public string TypeOfSale { get; set; }
         public int Price { get; set; }
         public string UserEntity { get; set; }
-        public string Image { get; set; } 
+        public  string UserImage { get; set; }
+        public List<string>Image { get; set; } 
     }
 }

@@ -18,10 +18,12 @@
         {
             @if (flat.ViewOfTheHouse == "Квартира" && count1 < 3)
             {
+                var img = "600_" + @flat.Image.First();
                 count1++;
                 <div class="card">
                     <h3 class="text-center text-primary">@flat.NumberOfRooms -ох кімнатна</h3>
-                    <img src="@flat.Image" class="card-img-top fixed-image" alt="Фото квартири">
+                    <img src="/images/@img" class="card-img-top fixed-image" alt="Фото квартири">
+
                     <div class="card-body">
                         <h5 class="card-title text-center">@flat.Name</h5>
                     </div>
@@ -34,7 +36,7 @@
 
                         <!-- designed by me... enjoy! -->
                         <div class="wrapper">
-                            <a class="cta" href="#">
+                            <a asp-controller="Home" asp-action="DetailCard" asp-route-id=@flat.Id class="cta">
                                 <span>Детальніше</span>
                                 <span>
                                     <svg width="66px" height="43px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -67,9 +69,10 @@
         {
             @if (building.ViewOfTheHouse == "Будинок" && count2 < 3)
             {
+                var img = "600_" + @building.Image.First();
                 count2++;
                 <div class="card">
-                    <img src="@building.Image" class="card-img-top fixed-image" alt="Фото будинку">
+                    <img src="/images/@img" class="card-img-top fixed-image" alt="Фото будинку">
                     <div class="card-body">
                         <h5 class="card-title text-center">@building.Name</h5>
                     </div>
@@ -82,7 +85,7 @@
 
                         <!-- designed by me... enjoy! -->
                         <div class="wrapper">
-                            <a class="cta" href="#">
+                            <a asp-controller="Home" asp-action="DetailCard" asp-route-id=@building.Id class="cta">
                                 <span>Детальніше</span>
                                 <span>
                                     <svg width="66px" height="43px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">

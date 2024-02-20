@@ -1,0 +1,76 @@
+﻿@using BusinessLogic.DTOs;
+@model BuildingDto
+
+<link rel="stylesheet" href="~/css/CardStyle.css">
+
+@{
+    int i = 0;
+}
+
+
+
+<div class="first-container">
+  
+    <h1 class="text-center">@Model.Name</h1>    
+        <div id="carouselExample" class="carousel slide">
+            <div class="carousel-inner">
+                @foreach (var image in Model.Image)
+                {
+                    var img = "600_" + @image;
+                    if (i == 0)
+                    {
+                        <div class="carousel-item active">
+                            <img src="/images/@img" class="d-block w-100" alt="...">
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="carousel-item">
+                            <img src="/images/@img" class="d-block w-100" alt="...">
+                        </div>
+                    }
+                    i++;
+                }
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <i class="bi bi-arrow-left-circle-fill"></i>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <i class="bi bi-arrow-right-circle-fill"></i>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+    <div class="fill_color1"><h2>Адреса:@Model.Address</h2></div>
+        
+    <div class="fill_color2"><h2>Площа:@Model.Area м.кв</h2></div>
+
+    @if (Model.ViewOfTheHouse == "Квартира")
+    {
+        <div class="fill_color3"><h2>Кількість кімнат: @Model.NumberOfRooms</h2></div>
+    } 
+        
+    <div class="fill_color4"><h2>Ціна: @Model.Price<i class="bi bi-currency-dollar"></i></h2> </div>
+        
+        <div class="information">
+        <p> @Model.Description</p>
+        </div>
+    <h1 class="text-center" style="color:crimson">Зв'язатися з продавцем</h1> 
+
+        <div class="seller"> 
+            
+            <div class="fotoAndButton">
+                <div class="foto">                
+                <img src="/images/@Model.UserImage" alt="@Model.UserEntity">
+                </div>
+            <h2>@Model.UserEntity</h2>
+            </div>
+
+            <div class="button_information">
+                <a></a>
+                <a></a>
+            </div>
+        </div>
+</div>
+
