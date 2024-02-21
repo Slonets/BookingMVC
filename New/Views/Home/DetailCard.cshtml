@@ -1,12 +1,32 @@
 ﻿@using BusinessLogic.DTOs;
-@model BuildingDto
+@using Microsoft.AspNetCore.Identity;
+@model BuildingDto 
 
 <link rel="stylesheet" href="~/css/CardStyle.css">
 
 @{
-    int i = 0;
+    int i = 0;   
 }
 
+
+<script>
+    
+    document.addEventListener("DOMContentLoaded", function () {
+        var userInfoLink = document.getElementById("userInfoLink");
+
+        // Передача інформації про аутентифікацію користувача в JavaScript
+        var isUserAuthenticated = @User.Identity.IsAuthenticated.ToString().ToLower();       
+
+        // Перевіряємо, чи користувач зареєстрований
+        if (isUserAuthenticated) {
+            // Якщо так, то замінюємо текст на повну інформацію
+            userInfoLink.innerText = '@Model.PhoneNumber'.substring(6);
+        } else {
+            // Якщо користувач не зареєстрований, показуємо тільки перші 5 символів
+            userInfoLink.innerText = "+380-00-****";
+        }
+    });
+</script>
 
 
 <div class="first-container">
@@ -67,9 +87,9 @@
             <h2>@Model.UserEntity</h2>
             </div>
 
-            <div class="button_information">
-                <a></a>
-                <a></a>
+            <div class="button_information">            
+            <a class="btn btn-secondary rounded-pill px-3" id="userInfoLink"></a>
+            <a class="btn btn-info rounded-pill px-3" id="link">Чат з продавцем</a>
             </div>
         </div>
 </div>

@@ -10,10 +10,11 @@ h1 {
 .first-container {
     width: 900px;
     display: inline-block;
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     margin: 0 auto;
+    border: 2px solid;
+    border-color: #7604fa;
 }
 
 .carousel-item
@@ -97,7 +98,7 @@ h1 {
 }
 
 .fotoAndButton {
-    width:70%;
+    width:40%;
     display: flex;
     flex-direction: row;
 }
@@ -115,17 +116,39 @@ h1 {
 }
 
 .button_information {
-    width: 50%;
+    width: 60%;
     /*display: inline-block;*/
     display: flex;
-    flex-direction: column;
-    background-color:black;
+    flex-direction: row;
+   
 }
 
 .button_information>a {
-    width:150px;
+    margin-top:30px;
+    width:350px;    
     height:60px;
 }
 
+.px-3
+{
+    margin-right:10px;
+}
 
+.grey {
+    color: #e7e7e7;
+}
+
+#userInfoLink {
+    text-decoration: none;
+    color: black;
+    font-size:20px;
+    text-align:center;
+}
+
+#link {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    text-align: center;
+}
 
