@@ -1,3 +1,4 @@
+using BusinessLogic.DTOs;
 using BusinessLogic.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using New.Models;
@@ -24,9 +25,22 @@ namespace New.Controllers
             return View(await _building.GetId(id));
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public async Task<IActionResult> AllInformation()
         {
-            return View();
+            return View(await _building.GetAll());
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllFlat()
+        {
+            return View(await _building.AllFlat());
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> AllHouse()
+        {
+            return View(await _building.AllHouse());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

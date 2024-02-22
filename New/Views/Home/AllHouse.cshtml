@@ -1,0 +1,72 @@
+﻿@using BusinessLogic.DTOs;
+@model List<BuildingDto>
+
+
+<link rel="stylesheet" href="~/css/TableStyle.css">
+
+
+<div class="container">
+
+    <div class="filter-buttons mb-3 text-center">
+        <button onclick="showAll()">Всі</button>
+        <button onclick="showSales()">Продаж</button>
+        <button onclick="showRentals()">Оренда</button>
+    </div>
+
+    @foreach (var item in Model)
+    {
+        var img = "300_" + @item.Image.First();
+
+        <a href="@Url.Action("DetailCard", "Home", new { id = @item.Id })" class="row mb-3 text-center category-item" data-category="@item.TypeOfSale">
+            <div class="col-md-8 themed-grid-col">
+                <div class="pb-3">
+                    <h4> @item.Name</h4>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6 themed-grid-col">Площа - @item.Area м.кв </div>
+                    <div class="col-md-6 themed-grid-col">@item.Price <i class="bi bi-currency-dollar"></i></div>
+                </div>
+                <h5> @item.Address</h5>
+            </div>
+            <div class="col-md-4 themed-grid-col">
+                <img src="~/images/@img" />
+            </div>
+        </a>
+    }
+</div>
+
+<script>
+    function showAll() {
+        // Функція, яка відображає всі елементи без фільтрації за категорією
+        showItemsByCategory("");
+    }
+
+    function showSales() {
+        // Функція, яка відображає елементи з категорією "Продаж"
+        showItemsByCategory("Продаж");
+    }
+
+    function showRentals() {
+        // Функція, яка відображає елементи з категорією "Оренда"
+        showItemsByCategory("Оренда");
+    }
+
+    function showItemsByCategory(category) {
+        // Функція, яка виконує фільтрацію елементів за категорією
+        var items = document.querySelectorAll('.container .category-item');
+        items.forEach(function (item) {
+            // Отримання значення атрибута 'data-category' елемента
+            var itemCategory = item.getAttribute('data-category');
+
+            // Перевірка, чи елемент належить обраній категорії
+            if (category === "" || itemCategory === category) {
+                // Видалення класу 'd-none', який робить елемент видимим
+                item.classList.remove('d-none');
+            } else {
+                // Додавання класу 'd-none', який робить елемент прихованим
+                item.classList.add('d-none');
+            }
+        });
+    }
+</script>

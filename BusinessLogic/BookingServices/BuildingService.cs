@@ -51,6 +51,30 @@ namespace BusinessLogic.BookingServices
             return _mapper.Map<List<BuildingDto>>(buildings);
         }
 
+        public async Task<ICollection<BuildingDto>> AllFlat()
+        {
+            var buildings = await _buildingEntity.GetIQueryable()
+                .Include(x => x.ImagesBulding)
+                .Include(x => x.ViewOfTheHouse)
+                .Include(x => x.TypeOfSale)
+                .Where(x=>x.ViewOfTheHouse.Name=="Квартира")
+                .ToListAsync();
+
+            return _mapper.Map<List<BuildingDto>>(buildings);
+        }
+
+        public async Task<ICollection<BuildingDto>> AllHouse()
+        {
+            var buildings = await _buildingEntity.GetIQueryable()
+                .Include(x => x.ImagesBulding)
+                .Include(x => x.ViewOfTheHouse)
+                .Include(x => x.TypeOfSale)
+                .Where(x => x.ViewOfTheHouse.Name == "Будинок")
+                .ToListAsync();
+
+            return _mapper.Map<List<BuildingDto>>(buildings);
+        }
+
         public async Task Create(BuildingDto buildingDto)
         {
             throw new NotImplementedException();
