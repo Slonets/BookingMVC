@@ -15,7 +15,7 @@
 
     @foreach (var item in Model)
     {
-        var img = "300_" + @item.Image.First();
+        var img = "300_" + @item.ImagesBulding.First();
 
         <a href="@Url.Action("DetailCard", "Home", new { id = @item.Id })" class="row mb-3 text-center category-item" data-category="@item.TypeOfSale">
             <div class="col-md-8 themed-grid-col">

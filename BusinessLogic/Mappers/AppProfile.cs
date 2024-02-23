@@ -50,14 +50,14 @@ namespace BusinessLogic.Mappers
                 .ForMember(dest => dest.TypeOfSale, opt => opt.Ignore())
                 .ForMember(dest => dest.UserEntity, opt => opt.Ignore());
 
-
             CreateMap<BuildingEntity, BuildingDto>()
             .ForMember(dest => dest.ViewOfTheHouse, opt => opt.MapFrom(src => GetNameBuilding(src)))
             .ForMember(dest => dest.TypeOfSale, opt => opt.MapFrom(src => src.TypeOfSale.Name))
             .ForMember(dest => dest.UserEntity, opt => opt.MapFrom(src => src.UserEntity.FirstName + " " + src.UserEntity.LastName))
-            .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.ImagesBulding.Select(img => img.Path).ToList()))
+            .ForMember(dest => dest.ImagesBulding, opt => opt.MapFrom(src => src.ImagesBulding.Select(img => img.Path).ToList()))
             .ForMember(dest => dest.UserImage, opt => opt.MapFrom(src => "300_" + src.UserEntity.Image))
-            .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.UserEntity.PhoneNumber));
+            .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.UserEntity.PhoneNumber))
+            .ForMember(dest => dest.Image, opt => opt.Ignore());
         }
 
         public string GetNameBuilding(BuildingEntity buildingEntity)

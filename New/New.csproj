@@ -11,6 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\CardCreate.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\html\index.html" />
   </ItemGroup>
 

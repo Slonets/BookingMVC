@@ -77,7 +77,23 @@ namespace BusinessLogic.BookingServices
 
         public async Task Create(BuildingDto buildingDto)
         {
-            throw new NotImplementedException();
+            // Ініціалізуємо список для зберігання шляхів до зображень
+            buildingDto.ImagesBulding = new List<string>();
+
+            foreach (var file in buildingDto.Image)
+            {
+                    // Зберігаємо кожен файл і додаємо шлях до списку
+                    string imagePath = _imageWorker.ImageSave(file);
+                    buildingDto.ImagesBulding.Add(imagePath);
+            }          
+
+            // Видаляємо поле Image, оскільки тепер ми використовуємо ImagesBulding
+            buildingDto.Image = null;
+
+            // Мапимо та зберігаємо об'єкт BuildingEntity
+            var building = _mapper.Map<BuildingEntity>(buildingDto);
+            await _buildingEntity.InsertAsync(building);
+            await _buildingEntity.SaveAsync();
         }
 
         public async Task Edit(BuildingDto buildingDto)

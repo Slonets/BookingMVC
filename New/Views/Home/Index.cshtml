@@ -18,7 +18,7 @@
         {
             @if (flat.ViewOfTheHouse == "Квартира" && count1 < 3)
             {
-                var img = "600_" + @flat.Image.First();
+                var img = "600_" + @flat.ImagesBulding.First();
                 count1++;
                 <div class="card">
                     <h3 class="text-center text-primary">@flat.NumberOfRooms -ох кімнатна</h3>
@@ -69,7 +69,7 @@
         {
             @if (building.ViewOfTheHouse == "Будинок" && count2 < 3)
             {
-                var img = "600_" + @building.Image.First();
+                var img = "600_" + @building.ImagesBulding.First();
                 count2++;
                 <div class="card">
                     <img src="/images/@img" class="card-img-top fixed-image" alt="Фото будинку">

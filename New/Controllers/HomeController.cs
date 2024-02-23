@@ -43,6 +43,20 @@ namespace New.Controllers
             return View(await _building.AllHouse());
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(BuildingDto buildingDto, List<IFormFile> Image)
+        {
+            await _building.Create(buildingDto);
+
+            return RedirectToAction(nameof(Index), "Home");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
