@@ -52,6 +52,8 @@ namespace New.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(BuildingDto buildingDto, List<IFormFile> Image)
         {
+            var r = this.Request;
+
             await _building.Create(buildingDto);
 
             return RedirectToAction(nameof(Index), "Home");

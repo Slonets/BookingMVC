@@ -16,7 +16,7 @@
     <div class="card-group">
         @foreach (var flat in Model)
         {
-            @if (flat.ViewOfTheHouse == "Квартира" && count1 < 3)
+            @if (flat.ViewOfTheHouse.Name == "Квартира" && count1 < 3)
             {
                 var img = "600_" + @flat.ImagesBulding.First();
                 count1++;
@@ -67,7 +67,7 @@
     <div class="card-group">
         @foreach (var building in Model)
         {
-            @if (building.ViewOfTheHouse == "Будинок" && count2 < 3)
+            @if (building.ViewOfTheHouse.Name == "Будинок" && count2 < 3)
             {
                 var img = "600_" + @building.ImagesBulding.First();
                 count2++;

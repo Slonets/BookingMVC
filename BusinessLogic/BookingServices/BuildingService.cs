@@ -5,8 +5,10 @@ using DataAccess.Entities;
 using DataAccess.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,14 +18,18 @@ namespace BusinessLogic.BookingServices
     public class BuildingService : IBuilding
     {
         private readonly IRepository<BuildingEntity> _buildingEntity;
+        private readonly IRepository<ImagesBulding> _imagesBuldingEntity;
         private readonly IMapper _mapper;
         public readonly IImageWorker _imageWorker;
+        private readonly IConfiguration _configuration;
 
-        public BuildingService(IRepository<BuildingEntity> buildingEntity, IMapper mapper, IImageWorker imageWorker)
+        public BuildingService(IRepository<BuildingEntity> buildingEntity, IRepository<ImagesBulding> imagesBuldingEntity, IMapper mapper, IImageWorker imageWorker, IConfiguration configuration)
         {
             _buildingEntity = buildingEntity;
             _mapper = mapper;
             _imageWorker = imageWorker;
+            _configuration = configuration;
+            _imagesBuldingEntity = imagesBuldingEntity;
         }
 
         public async Task<BuildingDto> GetId(int id)
@@ -77,28 +83,55 @@ namespace BusinessLogic.BookingServices
 
         public async Task Create(BuildingDto buildingDto)
         {
-            // Ініціалізуємо список для зберігання шляхів до зображень
-            buildingDto.ImagesBulding = new List<string>();
-
-            foreach (var file in buildingDto.Image)
+            var newBulding = new BuildingEntity
             {
-                    // Зберігаємо кожен файл і додаємо шлях до списку
-                    string imagePath = _imageWorker.ImageSave(file);
-                    buildingDto.ImagesBulding.Add(imagePath);
-            }          
+                Name = buildingDto.Name,
+                Description = buildingDto.Description,
+                Area = buildingDto.Area,
+                Address = buildingDto.Address,
+                ViewOfTheHouse = new ViewOfTheHouse { Name = buildingDto.ViewOfTheHouse.Name },
+                NumberOfRooms = buildingDto.NumberOfRooms,
+                TypeOfSale = new TypeOfSale { Name = buildingDto.TypeOfSale.Name },
+                Price = buildingDto.Price,
+                UserEntityId = buildingDto.UserEntity.Id
+            };
 
-            // Видаляємо поле Image, оскільки тепер ми використовуємо ImagesBulding
-            buildingDto.Image = null;
-
-            // Мапимо та зберігаємо об'єкт BuildingEntity
-            var building = _mapper.Map<BuildingEntity>(buildingDto);
-            await _buildingEntity.InsertAsync(building);
+            await _buildingEntity.InsertAsync(newBulding);
             await _buildingEntity.SaveAsync();
+
+            foreach (var image in buildingDto.Image)
+            {
+                _imagesBuldingEntity.InsertAsync(
+                    new ImagesBulding{
+                   Path = _imageWorker.ImageSave(image),
+                   BuildingEntityId = buildingDto.Id
+                });
+            }
+            _imagesBuldingEntity.SaveAsync();
         }
 
         public async Task Edit(BuildingDto buildingDto)
         {
-            throw new NotImplementedException();
+            //отримати обєкт з серверу за цим Id, який раніше зберігався
+            var OldObject = await _buildingEntity.GetByIDAsync(buildingDto.Id);                  
+
+            if (OldObject != null)
+            {
+                if(buildingDto.Image!=null)
+                {
+                    //видаляю старі фото
+                    foreach (var image in OldObject.ImagesBulding)
+                    {
+                        _imageWorker.RemoveImage(image.Path);
+                    }
+
+                    //buildingDto.ImagesBulding.Add(_imageWorker.ImageSave(buildingDto.Image));
+                }
+                         
+
+                await _buildingEntity.UpdateAsync(OldObject);
+                await _buildingEntity.SaveAsync();
+            }
         }
 
         public async Task Delete(int id)

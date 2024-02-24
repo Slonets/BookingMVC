@@ -14,14 +14,12 @@ namespace BusinessLogic.DTOs
         public string Description { get; set; }
         public double Area { get; set; }
         public string Address { get; set; }
-        public string ViewOfTheHouse { get; set; }
+        public ViewOfTheHouseDto ViewOfTheHouse { get; set; }
         public int? NumberOfRooms { get; set; }
-        public string TypeOfSale { get; set; }
+        public TypeOfSaleDto TypeOfSale { get; set; }
         public int Price { get; set; }
-        public string UserEntity { get; set; }
-        public  string UserImage { get; set; }
-        public string PhoneNumber { get; set; }
+        public UserDto UserEntity { get; set; }       
         public List<IFormFile> Image { get; set; }
-        public List<string> ImagesBulding { get; set; } 
+        public List<ImagesBuldingDto> ImagesBulding { get; set; } 
     }
 }

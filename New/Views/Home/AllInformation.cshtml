@@ -23,11 +23,11 @@
                    
                     </div>
                     <div class="row">
-                    @if (item.ViewOfTheHouse=="Квартира")
+                    @if (item.ViewOfTheHouse.Name=="Квартира")
                     {
                         <div class="col-md-6 themed-grid-col">Кімнат - @item.NumberOfRooms </div>
                     }
-                    else if (item.ViewOfTheHouse == "Будинок")
+                    else if (item.ViewOfTheHouse.Name == "Будинок")
                     {
                         <div class="col-md-6 themed-grid-col">Площа - @item.Area м.кв</div>
                     }
