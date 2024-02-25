@@ -83,23 +83,12 @@ namespace BusinessLogic.BookingServices
 
         public async Task Create(BuildingDto buildingDto)
         {
-            var newBulding = new BuildingEntity
-            {
-                Name = buildingDto.Name,
-                Description = buildingDto.Description,
-                Area = buildingDto.Area,
-                Address = buildingDto.Address,
-                ViewOfTheHouse = new ViewOfTheHouse { Name = buildingDto.ViewOfTheHouse.Name },
-                NumberOfRooms = buildingDto.NumberOfRooms,
-                TypeOfSale = new TypeOfSale { Name = buildingDto.TypeOfSale.Name },
-                Price = buildingDto.Price,
-                UserEntityId = buildingDto.UserEntity.Id
-            };
+            var newBulding = _mapper.Map<BuildingEntity>(buildingDto);
 
             await _buildingEntity.InsertAsync(newBulding);
             await _buildingEntity.SaveAsync();
 
-            foreach (var image in buildingDto.Image)
+            foreach (var image in buildingDto.Images)
             {
                 _imagesBuldingEntity.InsertAsync(
                     new ImagesBulding{
@@ -113,25 +102,25 @@ namespace BusinessLogic.BookingServices
         public async Task Edit(BuildingDto buildingDto)
         {
             //отримати обєкт з серверу за цим Id, який раніше зберігався
-            var OldObject = await _buildingEntity.GetByIDAsync(buildingDto.Id);                  
+            //var OldObject = await _buildingEntity.GetByIDAsync(buildingDto.Id);                  
 
-            if (OldObject != null)
-            {
-                if(buildingDto.Image!=null)
-                {
-                    //видаляю старі фото
-                    foreach (var image in OldObject.ImagesBulding)
-                    {
-                        _imageWorker.RemoveImage(image.Path);
-                    }
+            //if (OldObject != null)
+            //{
+            //    if(buildingDto.Image!=null)
+            //    {
+            //        //видаляю старі фото
+            //        foreach (var image in OldObject.ImagesBulding)
+            //        {
+            //            _imageWorker.RemoveImage(image.Path);
+            //        }
 
-                    //buildingDto.ImagesBulding.Add(_imageWorker.ImageSave(buildingDto.Image));
-                }
+            //        //buildingDto.ImagesBulding.Add(_imageWorker.ImageSave(buildingDto.Image));
+            //    }
                          
 
-                await _buildingEntity.UpdateAsync(OldObject);
-                await _buildingEntity.SaveAsync();
-            }
+            //    await _buildingEntity.UpdateAsync(OldObject);
+            //    await _buildingEntity.SaveAsync();
+            //}
         }
 
         public async Task Delete(int id)

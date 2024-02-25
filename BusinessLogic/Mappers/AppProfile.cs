@@ -62,23 +62,11 @@ namespace BusinessLogic.Mappers
             CreateMap<BuildingDto, BuildingEntity>()
             .ForMember(dest => dest.ViewOfTheHouseId, opt => opt.MapFrom(src => src.ViewOfTheHouse.Id))
             .ForMember(dest => dest.TypeOfSaleId, opt => opt.MapFrom(src => src.TypeOfSale.Id))
-            .ForMember(dest => dest.UserEntityId, opt => opt.MapFrom(src => src.UserEntity.Id))
-            .ForMember(dest => dest.ImagesBulding, opt => opt.Ignore());
+            .ForMember(dest => dest.UserEntityId, opt => opt.MapFrom(src => src.UserEntity.Id));
+
 
             CreateMap<BuildingEntity, BuildingDto>()
-            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.Id))
-            .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
-            .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
-            .ForMember(dest => dest.Area, opt => opt.MapFrom(src => src.Area))
-            .ForMember(dest => dest.Address, opt => opt.MapFrom(src => src.Address))
-            .ForMember(dest => dest.NumberOfRooms, opt => opt.MapFrom(src => src.NumberOfRooms))
-            .ForMember(dest => dest.ViewOfTheHouse, opt => opt.MapFrom(src => new ViewOfTheHouse { Id = src.ViewOfTheHouse.Id, Name = src.ViewOfTheHouse.Name }))
-            .ForMember(dest => dest.TypeOfSale, opt => opt.MapFrom(src => new TypeOfSale { Id = src.TypeOfSale.Id, Name = src.TypeOfSale.Name }))
-            .ForMember(dest => dest.Price, opt => opt.MapFrom(src => src.Price))
-            .ForMember(dest => dest.UserEntity, opt => opt.MapFrom(src => new UserEntity { Id = src.Id, FirstName = src.UserEntity.FirstName, LastName = src.UserEntity.LastName, PhoneNumber = src.UserEntity.PhoneNumber, Email = src.UserEntity.Email, Image = src.UserEntity.Image }))
-            .ForMember(dest => dest.Image, opt => opt.Ignore())
-            .ForMember(dest => dest.ImagesBulding, opt => opt.MapFrom(src => src.ImagesBulding.Select(image => new ImagesBuldingDto { BuildingEntityId = src.Id, Path = image.Path }).ToList()));
-    
+           .ForMember(dest => dest.Images, opt => opt.Ignore());
 
             CreateMap<ImagesBuldingDto, ImagesBulding>()
             .ForMember(dest => dest.BuildingEntityId, opt => opt.Ignore())
