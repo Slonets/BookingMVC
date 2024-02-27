@@ -62,27 +62,26 @@ namespace BusinessLogic.Mappers
             CreateMap<BuildingDto, BuildingEntity>()
             .ForMember(dest => dest.ViewOfTheHouseId, opt => opt.MapFrom(src => src.ViewOfTheHouse.Id))
             .ForMember(dest => dest.TypeOfSaleId, opt => opt.MapFrom(src => src.TypeOfSale.Id))
-            .ForMember(dest => dest.UserEntityId, opt => opt.MapFrom(src => src.UserEntity.Id));
+            .ForMember(dest => dest.UserEntityId, opt => opt.MapFrom(src => src.UserEntity.Id))           
+            .ForMember(dest => dest.ImagesBulding, opt => opt.MapFrom(src => src.ImagesBulding));
 
+            CreateMap<BuildingEntity, BuildingDto>().ReverseMap();
 
-            CreateMap<BuildingEntity, BuildingDto>()
-           .ForMember(dest => dest.Images, opt => opt.Ignore());
+            CreateMap<BuildingCreateDto, BuildingEntity>()
+            .ForMember(dest => dest.ImagesBulding, opt => opt.Ignore())
+            .ForMember(dest => dest.UserEntity, opt => opt.Ignore())
+            .ForMember(dest => dest.ViewOfTheHouse, opt => opt.Ignore())
+            .ForMember(dest => dest.UserEntity, opt => opt.Ignore());
 
-            CreateMap<ImagesBuldingDto, ImagesBulding>()
-            .ForMember(dest => dest.BuildingEntityId, opt => opt.Ignore())
-            .ForMember(dest => dest.Buildings, opt => opt.Ignore());
+            CreateMap<BuildingEntity, BuildingCreateDto>()
+            .ForMember(dest => dest.Images, opt => opt.Ignore());
 
-        CreateMap<ViewOfTheHouseDto, ViewOfTheHouse>().ReverseMap();
+            CreateMap<ImagesBuldingDto, ImagesBulding>().ReverseMap();
 
-        CreateMap<TypeOfSaleDto, TypeOfSale>().ReverseMap();
-    }
+            CreateMap<ViewOfTheHouseDto, ViewOfTheHouse>().ReverseMap();
 
-        //public string GetNameBuilding(BuildingEntity buildingEntity)
-        //{
-        //    string result = buildingEntity.ViewOfTheHouse.Name;            
-
-        //    return result;
-        //}
+            CreateMap<TypeOfSaleDto, TypeOfSale>().ReverseMap();
+    }        
 
         private string GetRoleFromUserEntity(UserEntity userEntity)
         {

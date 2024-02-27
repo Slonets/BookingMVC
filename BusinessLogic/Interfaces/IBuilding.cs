@@ -13,7 +13,7 @@ namespace BusinessLogic.Interfaces
         Task<ICollection<BuildingDto>> GetAll();
         Task<ICollection<BuildingDto>> AllFlat();
         Task<ICollection<BuildingDto>> AllHouse();        
-        Task Create(BuildingDto buildingDto);
+        Task Create(BuildingCreateDto create);
         Task Edit(BuildingDto buildingDto);
         Task Delete(int id);
     }

@@ -20,7 +20,7 @@
         // Перевіряємо, чи користувач зареєстрований
         if (isUserAuthenticated) {
             // Якщо так, то замінюємо текст на повну інформацію
-            userInfoLink.innerText = '@Model.PhoneNumber'.substring(6);
+            userInfoLink.innerText = '@Model.UserEntity.PhoneNumber'.substring(6);
         } else {
             // Якщо користувач не зареєстрований, показуємо тільки перші 5 символів
             userInfoLink.innerText = "+380-00-****";
@@ -36,7 +36,7 @@
             <div class="carousel-inner">
                 @foreach (var image in Model.ImagesBulding)
                 {
-                    var img = "600_" + @image;
+                    var img = "600_" + @image.Path;
                     if (i == 0)
                     {
                         <div class="carousel-item active">
@@ -82,9 +82,9 @@
             
             <div class="fotoAndButton">
                 <div class="foto">                
-                <img src="/images/@Model.UserImage" alt="@Model.UserEntity">
+                <img src="/images/@Model.UserEntity.Image" alt="@Model.UserEntity.FirstName+" "@Model.UserEntity.LastName>
                 </div>
-            <h2>@Model.UserEntity</h2>
+            <h2>@Model.UserEntity.FirstName @Model.UserEntity.LastName</h2>
             </div>
 
             <div class="button_information">            

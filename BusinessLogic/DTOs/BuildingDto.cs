@@ -20,7 +20,6 @@ namespace BusinessLogic.DTOs
         public TypeOfSaleDto TypeOfSale { get; set; }
         public int Price { get; set; }
         public UserDto UserEntity { get; set; }       
-        public List<IFormFile> Images { get; set; }
         public ICollection<ImagesBuldingDto> ImagesBulding { get; set; }
     }
 }

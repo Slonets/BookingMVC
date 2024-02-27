@@ -12,6 +12,6 @@ namespace BusinessLogic.DTOs
     {
         public int Id { get; set; }
         public string Path { get; set; }
-        public int BuildingEntityId { get; set; }
+        public int BuildingEntityId { get; set; }        
     }
 }
