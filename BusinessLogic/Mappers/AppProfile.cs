@@ -74,7 +74,8 @@ namespace BusinessLogic.Mappers
             .ForMember(dest => dest.UserEntity, opt => opt.Ignore());
 
             CreateMap<BuildingEntity, BuildingCreateDto>()
-            .ForMember(dest => dest.Images, opt => opt.Ignore());
+            .ForMember(dest => dest.Images, opt => opt.Ignore())
+             .ForMember(dest => dest.ViewOfTheHouse, opt => opt.MapFrom(src => src.ViewOfTheHouse.Name));
 
             CreateMap<ImagesBuldingDto, ImagesBulding>().ReverseMap();
 

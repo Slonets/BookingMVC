@@ -142,5 +142,4 @@ namespace BusinessLogic.BookingServices
             emailService.Send(info);
         }
     }
-
 }

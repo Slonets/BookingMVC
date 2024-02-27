@@ -32,32 +32,28 @@
             <label asp-for="Address" for="Address" class="form-label">Адреса</label>
             <input asp-for="Address" type="text" class="form-control" placeholder="Тут має бути адреса">
             @* <span asp-validation-for="Address" class="form-text text-danger"></span> *@
-        </div>
-
-       @*  <div class="col-md-12 text-center mx-auto">
-            <label asp-for="ViewOfTheHouse" for="ViewOfTheHouse" class="form-label">Тип об'єкта</label>
-            <select asp-for="ViewOfTheHouse" class="form-control" id="ViewOfTheHouse" onchange="toggleFields()">
-                <option value="Квартира">Квартира</option>
-                <option value="Будинок">Будинок</option>
-            </select>
-        </div> *@
-
-        <div class="form-group">
-            <label asp-for="ViewOfTheHouseId">ViewOfTheHouse</label>
-            <select asp-for="ViewOfTheHouseId" asp-items="@Model.ViewOfTheHouseList" class="form-select"></select>
-            <span asp-validation-for="ViewOfTheHouseId" class="text-danger"></span>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="TypeOfSaleId">TypeOfSale</label>
+        </div>     
+        
+        <div class="form-group text-center mx-auto">
+            <label asp-for="TypeOfSaleId">Вид</label>
             <select asp-for="TypeOfSaleId" asp-items="@Model.TypeOfSaleList" class="form-select"></select>
             <span asp-validation-for="TypeOfSaleId" class="text-danger"></span>
         </div>
 
-        <div class="form-group">
+      @*   <div class="form-group text-center mx-auto">
             <label asp-for="UserEntityId">UserEntity</label>
             <select asp-for="UserEntityId" asp-items="@Model.UserList" class="form-select"></select>
             <span asp-validation-for="UserEntityId" class="text-danger"></span>
+        </div>     *@
+
+        <div class="form-group text-center mx-auto">            
+            <input asp-for="UserEntityId" type="hidden" value="@User.Identity.Name" />
+            <span asp-validation-for="UserEntityId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group text-center mx-auto">
+            <label asp-for="ViewOfTheHouseId">Тип об'єкта</label>
+            <select asp-for="ViewOfTheHouseId" asp-items="@Model.ViewOfTheHouseList" class="form-select" id="ViewOfTheHouseId" data-toggle-field="true"></select>
         </div>
 
         <div class="col-md-6 text-center mx-auto" id="NumberOfRoomsField">
@@ -91,20 +87,28 @@
 </div>
 
 <script>
-    function toggleFields() {
-        var houseType = document.getElementById("ViewOfTheHouse").value;
+    document.addEventListener("DOMContentLoaded", function () {
+        var viewOfTheHouseSelect = document.getElementById("ViewOfTheHouseId");
         var roomsField = document.getElementById("NumberOfRoomsField");
         var areaField = document.getElementById("AreaField");
 
-        if (houseType === "Квартира") {
-            roomsField.style.display = "block";
-            areaField.style.display = "none";
-        } else if (houseType === "Будинок") {
-            roomsField.style.display = "none";
-            areaField.style.display = "block";
-        } else {
-            roomsField.style.display = "none";
-            areaField.style.display = "none";
+        viewOfTheHouseSelect.addEventListener("change", function () {
+            toggleFields();
+        });
+
+        function toggleFields() {
+            var houseType = viewOfTheHouseSelect.value;
+
+            if (houseType === 1) {
+                roomsField.style.visibility = "visible";
+                areaField.style.visibility = "hidden";
+            } else if (houseType === 2) {
+                roomsField.style.visibility = "hidden";
+                areaField.style.visibility = "visible";
+            } else {
+                roomsField.style.visibility = "hidden";
+                areaField.style.visibility = "hidden";
+            }
         }
-    }
+    });
 </script>

@@ -31,6 +31,7 @@
                         @if (role.Equals(@Admin))
                         {
                             <li><a asp-controller="Admin" asp-action="Index" class="nav-link px-2 text-white">Усі користувачі</a></li>
+                            <li><a asp-controller="Home" asp-action="Create" class="nav-link px-2 text-white">Подати нове оголошення</a></li>
                         }
                         else if (role.Equals(@Seller))
                         {
