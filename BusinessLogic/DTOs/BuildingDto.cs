@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccess.Entities;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,13 +15,11 @@ namespace BusinessLogic.DTOs
         public string Description { get; set; }
         public double Area { get; set; }
         public string Address { get; set; }
-        public string ViewOfTheHouse { get; set; }
+        public ViewOfTheHouseDto ViewOfTheHouse { get; set; }
         public int? NumberOfRooms { get; set; }
-        public string TypeOfSale { get; set; }
+        public TypeOfSaleDto TypeOfSale { get; set; }
         public int Price { get; set; }
-        public string UserEntity { get; set; }
-        public  string UserImage { get; set; }
-        public string PhoneNumber { get; set; }
-        public List<string>Image { get; set; } 
+        public UserDto UserEntity { get; set; }       
+        public ICollection<ImagesBuldingDto> ImagesBulding { get; set; }
     }
 }

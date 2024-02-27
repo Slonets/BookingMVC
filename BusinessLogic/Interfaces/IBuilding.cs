@@ -10,8 +10,10 @@ namespace BusinessLogic.Interfaces
     public interface IBuilding
     {
         Task<BuildingDto> GetId(int id);
-        Task<ICollection<BuildingDto>> GetAll();        
-        Task Create(BuildingDto buildingDto);
+        Task<ICollection<BuildingDto>> GetAll();
+        Task<ICollection<BuildingDto>> AllFlat();
+        Task<ICollection<BuildingDto>> AllHouse();        
+        Task Create(BuildingCreateDto create);
         Task Edit(BuildingDto buildingDto);
         Task Delete(int id);
     }

@@ -7,6 +7,7 @@
 
 @{
     string Admin = "Admin";
+    string Seller = "Seller";
 }
 
 
@@ -31,11 +32,15 @@
                         {
                             <li><a asp-controller="Admin" asp-action="Index" class="nav-link px-2 text-white">Усі користувачі</a></li>
                         }
+                        else if (role.Equals(@Seller))
+                        {
+                            <li><a asp-controller="Home" asp-action="Create" class="nav-link px-2 text-white">Подати нове оголошення</a></li>
+                        }
                     }
 
                 }
 
-                <li><a href="#" class="nav-link px-2 text-white" asp-controller="Home" asp-action="AllInformation">Всі оголошення</a></li>
+                <li><a class="nav-link px-2 text-white" asp-controller="Home" asp-action="AllInformation">Всі оголошення</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
                 <li><a href="#" class="nav-link px-2 text-white">About</a></li>
             </ul>

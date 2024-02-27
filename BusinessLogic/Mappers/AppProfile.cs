@@ -1,7 +1,12 @@
 ﻿using AutoMapper;
 using BusinessLogic.DTOs;
 using BusinessLogic.DTOs.User;
+using BusinessLogic.Interfaces;
 using DataAccess.Entities;
+using DataAccess.Interfaces;
+using Microsoft.EntityFrameworkCore.Update.Internal;
+using Microsoft.Extensions.Configuration;
+using SixLabors.ImageSharp.ColorSpaces.Companding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +18,19 @@ namespace BusinessLogic.Mappers
 {
     public class AppProfile : Profile
     {
+        public readonly IImageWorker _imageWorker;
+
+        public AppProfile(IImageWorker imageWorker)
+        {
+            _imageWorker = imageWorker;
+        }
+
+
         public AppProfile()
         {
-            CreateMap<RegistedDto, UserEntity>()
+          
+
+        CreateMap<RegistedDto, UserEntity>()
              .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email))
              .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
              .ForMember(dest => dest.Image, opt => opt.Ignore()) //коли перетворюємо, то поле Image ігнорується    
@@ -36,8 +51,7 @@ namespace BusinessLogic.Mappers
 
             CreateMap<UserRoleEntityDto, UserRoleEntity>().ReverseMap();
 
-            CreateMap<UserEntity, UserDto>()
-                
+            CreateMap<UserEntity, UserDto>()                
             .ForMember(dest => dest.Image, opt => opt.MapFrom(src => "300_"+src.Image))
             .ForMember(dest => dest.Roles, opt => opt.MapFrom(src => GetRoleFromUserEntity(src)));
 
@@ -46,26 +60,28 @@ namespace BusinessLogic.Mappers
 
 
             CreateMap<BuildingDto, BuildingEntity>()
-                .ForMember(dest => dest.ViewOfTheHouse, opt => opt.Ignore())
-                .ForMember(dest => dest.TypeOfSale, opt => opt.Ignore())
-                .ForMember(dest => dest.UserEntity, opt => opt.Ignore());
+            .ForMember(dest => dest.ViewOfTheHouseId, opt => opt.MapFrom(src => src.ViewOfTheHouse.Id))
+            .ForMember(dest => dest.TypeOfSaleId, opt => opt.MapFrom(src => src.TypeOfSale.Id))
+            .ForMember(dest => dest.UserEntityId, opt => opt.MapFrom(src => src.UserEntity.Id))           
+            .ForMember(dest => dest.ImagesBulding, opt => opt.MapFrom(src => src.ImagesBulding));
 
+            CreateMap<BuildingEntity, BuildingDto>().ReverseMap();
 
-            CreateMap<BuildingEntity, BuildingDto>()
-            .ForMember(dest => dest.ViewOfTheHouse, opt => opt.MapFrom(src => GetNameBuilding(src)))
-            .ForMember(dest => dest.TypeOfSale, opt => opt.MapFrom(src => src.TypeOfSale.Name))
-            .ForMember(dest => dest.UserEntity, opt => opt.MapFrom(src => src.UserEntity.FirstName + " " + src.UserEntity.LastName))
-            .ForMember(dest => dest.Image, opt => opt.MapFrom(src => src.ImagesBulding.Select(img => img.Path).ToList()))
-            .ForMember(dest => dest.UserImage, opt => opt.MapFrom(src => "300_" + src.UserEntity.Image))
-            .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.UserEntity.PhoneNumber));
-        }
+            CreateMap<BuildingCreateDto, BuildingEntity>()
+            .ForMember(dest => dest.ImagesBulding, opt => opt.Ignore())
+            .ForMember(dest => dest.UserEntity, opt => opt.Ignore())
+            .ForMember(dest => dest.ViewOfTheHouse, opt => opt.Ignore())
+            .ForMember(dest => dest.UserEntity, opt => opt.Ignore());
 
-        public string GetNameBuilding(BuildingEntity buildingEntity)
-        {
-            string result = buildingEntity.ViewOfTheHouse.Name;            
+            CreateMap<BuildingEntity, BuildingCreateDto>()
+            .ForMember(dest => dest.Images, opt => opt.Ignore());
 
-            return result;
-        }
+            CreateMap<ImagesBuldingDto, ImagesBulding>().ReverseMap();
+
+            CreateMap<ViewOfTheHouseDto, ViewOfTheHouse>().ReverseMap();
+
+            CreateMap<TypeOfSaleDto, TypeOfSale>().ReverseMap();
+    }        
 
         private string GetRoleFromUserEntity(UserEntity userEntity)
         {

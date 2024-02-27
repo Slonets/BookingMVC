@@ -15,10 +15,14 @@
 
     <div class="card-group">
         @foreach (var flat in Model)
-        {
-            @if (flat.ViewOfTheHouse == "Квартира" && count1 < 3)
+        {  
+
+            @if (flat.ViewOfTheHouse.Name == "Квартира" && count1 < 3)               
             {
-                var img = "600_" + @flat.Image.First();
+
+                var firstImage = @flat.ImagesBulding.FirstOrDefault(); // Вибір першого елемента
+
+                var img = "600_" + @firstImage.Path;
                 count1++;
                 <div class="card">
                     <h3 class="text-center text-primary">@flat.NumberOfRooms -ох кімнатна</h3>
@@ -54,8 +58,8 @@
                 </div>
             }
         }
-    </div>   
-        <a href="#" class="button">Переглянути всі</a>
+    </div>
+    <a asp-controller="Home" asp-action="AllFlat" class="button">Переглянути всі</a>
     
 </div>
 
@@ -67,9 +71,12 @@
     <div class="card-group">
         @foreach (var building in Model)
         {
-            @if (building.ViewOfTheHouse == "Будинок" && count2 < 3)
+            @if (building.ViewOfTheHouse.Name == "Будинок" && count2 < 3)
             {
-                var img = "600_" + @building.Image.First();
+                var firstImage = @building.ImagesBulding.FirstOrDefault(); // Вибір першого елемента
+
+                var img = "600_" + @firstImage.Path;
+                
                 count2++;
                 <div class="card">
                     <img src="/images/@img" class="card-img-top fixed-image" alt="Фото будинку">
@@ -104,7 +111,7 @@
             }
         }
     </div>    
-    <a href="#" class="button">Переглянути всі</a>    
+    <a asp-controller="Home" asp-action="AllHouse" class="button">Переглянути всі</a>
 </div>
 
 

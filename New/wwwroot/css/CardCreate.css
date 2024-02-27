@@ -1,0 +1,10 @@
+﻿.create 
+{
+    width: 60%;
+    height: 50%;
+    margin: 0 auto;
+    background-color:#AFEEEE;
+    display:flex;
+    flex-direction:column;
+}
+
