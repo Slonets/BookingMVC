@@ -22,6 +22,7 @@ namespace BusinessLogic.DTOs
         public int Price { get; set; }
         public int UserEntityId { get; set; }
         public List<IFormFile> Images { get; set; }
+        public string ViewOfTheHouse { get; set; }
         public SelectList ViewOfTheHouseList { get; set; }
         public SelectList TypeOfSaleList { get; set; }
         public SelectList UserList { get; set; }

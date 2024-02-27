@@ -17,10 +17,11 @@ namespace New.Controllers
         private readonly UserManager<UserEntity> _userManager;
         private readonly BookingDbContext _dataContext;
 
-        public HomeController( IBuilding building, UserManager<UserEntity> userManager)
+        public HomeController( IBuilding building, UserManager<UserEntity> userManager, BookingDbContext dataContext)
         {
             _building = building;
-            _userManager = userManager;            
+            _userManager = userManager; 
+            _dataContext = dataContext;
         }
         [HttpGet]
         public async Task< IActionResult> Index()
@@ -60,36 +61,25 @@ namespace New.Controllers
 
             var typeOfSale = _dataContext.TypeOfSale
                .Select(x => new { Value = x.Id, Text = x.Name })
-               .ToList();
-
-            var user = _dataContext.Users
-                .Select(x => new { Value = x.Id, Text = x.Email })
-               .ToList();
+               .ToList();          
 
 
 
             var model = new BuildingCreateDto
             {
                 ViewOfTheHouseList = new SelectList(viewOfTheHouse, "Value", "Text"),
-                TypeOfSaleList = new SelectList(typeOfSale, "Value", "Text"),
-                UserList = new SelectList(user, "Value", "Email")
+                TypeOfSaleList = new SelectList(typeOfSale, "Value", "Text")                
             };
 
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(BuildingDto buildingDto, List<IFormFile> Image)
+        public async Task<IActionResult> Create(BuildingCreateDto create, List<IFormFile> Image)
         {
-            //var r = this.Request;
-            //var userName = User.Identity.Name;
-            //var user = await _userManager.FindByNameAsync(userName);
-            //buildingDto.UserEntity = new UserDto
-            //{
-            //    Id = user.Id
-            //};
-            
-            //await _building.Create(buildingDto);
+            var r = this.Request;
+
+            await _building.Create(create);
 
             return RedirectToAction(nameof(Index), "Home");
         }

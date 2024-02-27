@@ -20,16 +20,14 @@ namespace BusinessLogic.BookingServices
         private readonly IRepository<BuildingEntity> _buildingEntity;
         private readonly IRepository<ImagesBulding> _imagesBuldingEntity;
         private readonly IMapper _mapper;
-        public readonly IImageWorker _imageWorker;
-        private readonly IConfiguration _configuration;
+        public readonly IImageWorker _imageWorker;       
         
 
-        public BuildingService(IRepository<BuildingEntity> buildingEntity, IRepository<ImagesBulding> imagesBuldingEntity, IMapper mapper, IImageWorker imageWorker, IConfiguration configuration)
+        public BuildingService(IRepository<BuildingEntity> buildingEntity, IRepository<ImagesBulding> imagesBuldingEntity, IMapper mapper, IImageWorker imageWorker)
         {
             _buildingEntity = buildingEntity;
             _mapper = mapper;
-            _imageWorker = imageWorker;
-            _configuration = configuration;
+            _imageWorker = imageWorker;            
             _imagesBuldingEntity = imagesBuldingEntity;           
         }
 
@@ -84,20 +82,21 @@ namespace BusinessLogic.BookingServices
 
         public async Task Create(BuildingCreateDto create)
         {
-            //var newBulding = _mapper.Map<BuildingEntity>(create);
+            var newBulding = _mapper.Map<BuildingEntity>(create);
 
-            //await _buildingEntity.InsertAsync(newBulding);
-            //await _buildingEntity.SaveAsync();
+            await _buildingEntity.InsertAsync(newBulding);
+            await _buildingEntity.SaveAsync();
 
-            //foreach (var image in buildingDto.Images)
-            //{
-            //    _imagesBuldingEntity.InsertAsync(
-            //        new ImagesBulding{                    
-            //       Path = _imageWorker.ImageSave(image),
-            //       BuildingEntityId = buildingDto.Id
-            //    });
-            //}
-            //_imagesBuldingEntity.SaveAsync();
+            foreach (var image in create.Images)
+            {
+                await _imagesBuldingEntity.InsertAsync(
+                    new ImagesBulding
+                    {
+                        Path = _imageWorker.ImageSave(image),
+                        BuildingEntityId = newBulding.Id
+                    });               
+            }
+            await _imagesBuldingEntity.SaveAsync();
         }
 
         public async Task Edit(BuildingDto buildingDto)
