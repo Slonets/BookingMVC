@@ -85,7 +85,7 @@ namespace BusinessLogic.BookingServices
         public async Task Create(BuildingCreateDto create)
         {
             //var newBulding = _mapper.Map<BuildingEntity>(create);
-            
+
             //await _buildingEntity.InsertAsync(newBulding);
             //await _buildingEntity.SaveAsync();
 
