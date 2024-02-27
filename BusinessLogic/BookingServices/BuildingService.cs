@@ -84,20 +84,20 @@ namespace BusinessLogic.BookingServices
 
         public async Task Create(BuildingCreateDto create)
         {
-            var newBulding = _mapper.Map<BuildingEntity>(create);
+            //var newBulding = _mapper.Map<BuildingEntity>(create);
             
-            await _buildingEntity.InsertAsync(newBulding);
-            await _buildingEntity.SaveAsync();
+            //await _buildingEntity.InsertAsync(newBulding);
+            //await _buildingEntity.SaveAsync();
 
-            foreach (var image in buildingDto.Images)
-            {
-                _imagesBuldingEntity.InsertAsync(
-                    new ImagesBulding{                    
-                   Path = _imageWorker.ImageSave(image),
-                   BuildingEntityId = buildingDto.Id
-                });
-            }
-            _imagesBuldingEntity.SaveAsync();
+            //foreach (var image in buildingDto.Images)
+            //{
+            //    _imagesBuldingEntity.InsertAsync(
+            //        new ImagesBulding{                    
+            //       Path = _imageWorker.ImageSave(image),
+            //       BuildingEntityId = buildingDto.Id
+            //    });
+            //}
+            //_imagesBuldingEntity.SaveAsync();
         }
 
         public async Task Edit(BuildingDto buildingDto)

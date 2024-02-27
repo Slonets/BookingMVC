@@ -89,7 +89,7 @@ namespace New.Controllers
             //    Id = user.Id
             //};
             
-            await _building.Create(buildingDto);
+            //await _building.Create(buildingDto);
 
             return RedirectToAction(nameof(Index), "Home");
         }
