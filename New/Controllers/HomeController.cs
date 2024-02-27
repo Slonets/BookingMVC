@@ -61,19 +61,14 @@ namespace New.Controllers
 
             var typeOfSale = _dataContext.TypeOfSale
                .Select(x => new { Value = x.Id, Text = x.Name })
-               .ToList();
-
-            var user = _dataContext.Users
-                .Select(x => new { Value = x.Id })
-               .ToList();
+               .ToList();          
 
 
 
             var model = new BuildingCreateDto
             {
                 ViewOfTheHouseList = new SelectList(viewOfTheHouse, "Value", "Text"),
-                TypeOfSaleList = new SelectList(typeOfSale, "Value", "Text"),
-                UserList = new SelectList(user, "Value")
+                TypeOfSaleList = new SelectList(typeOfSale, "Value", "Text")                
             };
 
             return View(model);

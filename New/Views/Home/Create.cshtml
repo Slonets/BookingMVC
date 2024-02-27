@@ -1,13 +1,19 @@
 ﻿@using BusinessLogic.DTOs;
+@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
 @model BuildingCreateDto
 
+
 <link rel="stylesheet" href="~/css/CardCreate.css">
+
+@{
+    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+}
 
 <div class="container">
     <div class="row">
         <h2 class="text-center">Створити нове оголошення</h2>
     </div>
-
 
     @*enctype="multipart/form-data" дозволяє зберігати файли*@
     <form method="post" asp-controller="Home" asp-action="Create" class="row g-3 create" enctype="multipart/form-data">
@@ -38,30 +44,24 @@
             <label asp-for="TypeOfSaleId">Вид</label>
             <select asp-for="TypeOfSaleId" asp-items="@Model.TypeOfSaleList" class="form-select"></select>
             <span asp-validation-for="TypeOfSaleId" class="text-danger"></span>
-        </div>
+        </div>   
 
-      @*   <div class="form-group text-center mx-auto">
-            <label asp-for="UserEntityId">UserEntity</label>
-            <select asp-for="UserEntityId" asp-items="@Model.UserList" class="form-select"></select>
-            <span asp-validation-for="UserEntityId" class="text-danger"></span>
-        </div>     *@
-
-        <div class="form-group text-center mx-auto">            
-            <input asp-for="UserEntityId" type="hidden" value="@User.Identity.Name" />
+        <div class="form-group text-center mx-auto">
+            <input asp-for="UserEntityId" type="hidden" value="@User.FindFirstValue(ClaimTypes.NameIdentifier)"/>
             <span asp-validation-for="UserEntityId" class="text-danger"></span>
         </div>
 
         <div class="form-group text-center mx-auto">
             <label asp-for="ViewOfTheHouseId">Тип об'єкта</label>
-            <select asp-for="ViewOfTheHouseId" asp-items="@Model.ViewOfTheHouseList" class="form-select" id="ViewOfTheHouseId" data-toggle-field="true"></select>
+            <select asp-for="ViewOfTheHouseId" asp-items="@Model.ViewOfTheHouseList" class="form-select" id="ViewOfTheHouseId" onchange="toggleFields(this)"></select>
         </div>
 
-        <div class="col-md-6 text-center mx-auto" id="NumberOfRoomsField">
+        <div class="col-md-6 text-center mx-auto" id="NumberOfRoomsField" style="display:none;">
             <label asp-for="NumberOfRooms" for="NumberOfRooms" class="form-label">Кількість кімнат квартири</label>
             <input asp-for="NumberOfRooms" type="number" class="form-control" placeholder="Тут має бути число кімнат">
         </div>
 
-        <div class="col-md-6 text-center mx-auto" id="AreaField" style="display:none;">
+        <div class="col-md-6 text-center mx-auto" id="AreaField">
             <label asp-for="Area" for="Area" class="form-label">Площа у м.кв</label>
             <input asp-for="Area" type="number" class="form-control" placeholder="Тут має бути площа об'єкта">
         </div>
@@ -87,6 +87,29 @@
 </div>
 
 <script>
+
+    function toggleFields() {
+        var viewOfTheHouseSelect = document.getElementById("ViewOfTheHouseId");
+        var roomsField = document.getElementById("NumberOfRoomsField");
+        var areaField = document.getElementById("AreaField");
+
+        var houseType = viewOfTheHouseSelect.selectedIndex;
+        console.log(`Selected value: ${houseType}`);      
+
+        if (houseType === 0) 
+        {
+            roomsField.style.display = "none";
+            areaField.style.display = "block";
+            console.log("Зайшло в 0");
+        } 
+        else if (houseType === 1) 
+        {
+            roomsField.style.display = "block";
+            areaField.style.display = "none";
+            console.log("Зайшло в 1");
+        }        
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
         var viewOfTheHouseSelect = document.getElementById("ViewOfTheHouseId");
         var roomsField = document.getElementById("NumberOfRoomsField");
@@ -95,20 +118,6 @@
         viewOfTheHouseSelect.addEventListener("change", function () {
             toggleFields();
         });
-
-        function toggleFields() {
-            var houseType = viewOfTheHouseSelect.value;
-
-            if (houseType === 1) {
-                roomsField.style.visibility = "visible";
-                areaField.style.visibility = "hidden";
-            } else if (houseType === 2) {
-                roomsField.style.visibility = "hidden";
-                areaField.style.visibility = "visible";
-            } else {
-                roomsField.style.visibility = "hidden";
-                areaField.style.visibility = "hidden";
-            }
-        }
+   
     });
 </script>

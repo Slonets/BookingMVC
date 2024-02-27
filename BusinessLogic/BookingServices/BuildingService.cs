@@ -20,16 +20,14 @@ namespace BusinessLogic.BookingServices
         private readonly IRepository<BuildingEntity> _buildingEntity;
         private readonly IRepository<ImagesBulding> _imagesBuldingEntity;
         private readonly IMapper _mapper;
-        public readonly IImageWorker _imageWorker;
-        private readonly IConfiguration _configuration;
+        public readonly IImageWorker _imageWorker;       
         
 
-        public BuildingService(IRepository<BuildingEntity> buildingEntity, IRepository<ImagesBulding> imagesBuldingEntity, IMapper mapper, IImageWorker imageWorker, IConfiguration configuration)
+        public BuildingService(IRepository<BuildingEntity> buildingEntity, IRepository<ImagesBulding> imagesBuldingEntity, IMapper mapper, IImageWorker imageWorker)
         {
             _buildingEntity = buildingEntity;
             _mapper = mapper;
-            _imageWorker = imageWorker;
-            _configuration = configuration;
+            _imageWorker = imageWorker;            
             _imagesBuldingEntity = imagesBuldingEntity;           
         }
 
@@ -91,14 +89,14 @@ namespace BusinessLogic.BookingServices
 
             foreach (var image in create.Images)
             {
-                _imagesBuldingEntity.InsertAsync(
+                await _imagesBuldingEntity.InsertAsync(
                     new ImagesBulding
                     {
                         Path = _imageWorker.ImageSave(image),
-                        BuildingEntityId = create.Id
-                    });
+                        BuildingEntityId = newBulding.Id
+                    });               
             }
-            _imagesBuldingEntity.SaveAsync();
+            await _imagesBuldingEntity.SaveAsync();
         }
 
         public async Task Edit(BuildingDto buildingDto)
