@@ -16,5 +16,6 @@ namespace BusinessLogic.Interfaces
         Task Create(BuildingCreateDto create);
         Task Edit(BuildingDto buildingDto);
         Task Delete(int id);
+        Task<ICollection<BuildingDto>> MyAdvertisement(int id);
     }
 }

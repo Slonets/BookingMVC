@@ -89,5 +89,12 @@ namespace New.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpGet]
+        public async Task<IActionResult> MyAdvertisement(int id)
+        {
+            var value = _building.MyAdvertisement(id);
+            return View(value);
+        }
     }
 }

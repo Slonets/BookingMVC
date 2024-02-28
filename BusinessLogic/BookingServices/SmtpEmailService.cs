@@ -131,7 +131,7 @@ namespace BusinessLogic.BookingServices
             };
 
             // Зчитування HTML-коду з файлу та встановлення його як тіла повідомлення
-            string html = File.ReadAllText(@"D:\New\New\wwwroot\html\index.html");
+            string html = File.ReadAllText(@"E:\Project\BookingMVC\New\wwwroot\html\index.html");
 
             string newHtml = html.Replace("Email2", emailUser);
             newHtml = newHtml.Replace("Password2", password);

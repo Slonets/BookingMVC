@@ -36,6 +36,7 @@
                         else if (role.Equals(@Seller))
                         {
                             <li><a asp-controller="Home" asp-action="Create" class="nav-link px-2 text-white">Подати нове оголошення</a></li>
+                            <li><a asp-controller="Home" asp-action="MyAdvertisement" asp-route-id=@user.Id class="nav-link px-2 text-white">Мої оголошення</a></li>
                         }
                     }
 

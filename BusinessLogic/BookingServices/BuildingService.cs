@@ -126,6 +126,17 @@ namespace BusinessLogic.BookingServices
         public async Task Delete(int id)
         {
             throw new NotImplementedException();
-        }        
+        }
+        public async Task <ICollection<BuildingDto>>MyAdvertisement(int id)
+        {
+                 var value = await _buildingEntity.GetIQueryable()
+                .Include(x => x.ImagesBulding)
+                .Include(x => x.ViewOfTheHouse)
+                .Include(x => x.TypeOfSale)
+                .Include(x => x.UserEntity).Where(x => x.Id == id)
+                .ToListAsync();
+
+            return _mapper.Map<List<BuildingDto>>(value);           
+        }
     }
 }
