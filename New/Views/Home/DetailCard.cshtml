@@ -19,8 +19,19 @@
 
         // Перевіряємо, чи користувач зареєстрований
         if (isUserAuthenticated) {
-            // Якщо так, то замінюємо текст на повну інформацію
-            userInfoLink.innerText = '@Model.UserEntity.PhoneNumber'.substring(6);
+
+            var phone = '@Model.UserEntity.PhoneNumber';
+            if (phone.includes('+')) 
+            {
+                // Якщо так, то замінюємо текст на повну інформацію
+                userInfoLink.innerText = '@Model.UserEntity.PhoneNumber'.substring(6);
+            }
+            else
+            {
+                // Якщо так, то замінюємо текст на повну інформацію
+                userInfoLink.innerText = '@Model.UserEntity.PhoneNumber';
+            }
+               
         } else {
             // Якщо користувач не зареєстрований, показуємо тільки перші 5 символів
             userInfoLink.innerText = "+380-00-****";
