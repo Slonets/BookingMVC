@@ -125,7 +125,7 @@ namespace BusinessLogic.BookingServices
 
         public async Task Delete(int id)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException();            
         }        
     }
 }
